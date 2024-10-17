@@ -21,6 +21,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Brays83"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/DevDream-UPC/FarmGuard-Backend.git",
+    "accountId": "98df6c6e-0be0-49a9-9fca-163a68033e00"
+  }
+}]]></component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -32,6 +48,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     ".NET Launch Settings Profile.FarmGuard-Backend: http.executor": "Run",
+    ".NET Launch Settings Profile.FarmGuard-Backend: https.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "node.js.detected.package.eslint": "true",
@@ -42,7 +59,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.FarmGuard-Backend: http">
+  <component name="RunManager" selected=".NET Launch Settings Profile.FarmGuard-Backend: https">
     <configuration name="FarmGuard-Backend: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/FarmGuard-Backend/FarmGuard-Backend.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
@@ -99,14 +116,27 @@
       <updated>1729108607465</updated>
       <workItem from="1729108608765" duration="37000" />
       <workItem from="1729108778388" duration="5401000" />
+      <workItem from="1729136055224" duration="5406000" />
     </task>
+    <task id="LOCAL-00001" summary="chore[main]:commit initial">
+      <option name="closed" value="true" />
+      <created>1729144898831</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1729144898831</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="chore[main]:commit initial" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore[main]:commit initial" />
   </component>
 </project>
