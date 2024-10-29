@@ -9,7 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5bbbec5a-8698-4918-8ffc-318a3ad27a22" name="Changes" comment="" />
+    <list default="true" id="5bbbec5a-8698-4918-8ffc-318a3ad27a22" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/FarmGuard-Backend.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/FarmGuard-Backend.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.AssemblyInfoInputs.cache" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,20 +26,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Brays83"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Brays83&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/DevDream-UPC/FarmGuard-Backend.git",
-    "accountId": "98df6c6e-0be0-49a9-9fca-163a68033e00"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/DevDream-UPC/FarmGuard-Backend.git&quot;,
+    &quot;accountId&quot;: &quot;98df6c6e-0be0-49a9-9fca-163a68033e00&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Proyectos/06-C#/FarmGuard-Backend/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -45,20 +51,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.FarmGuard-Backend: http.executor": "Run",
-    ".NET Launch Settings Profile.FarmGuard-Backend: https.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.FarmGuard-Backend: http.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Launch Settings Profile.FarmGuard-Backend: https.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.FarmGuard-Backend: https">
     <configuration name="FarmGuard-Backend: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/FarmGuard-Backend/FarmGuard-Backend.csproj" />
@@ -117,6 +124,9 @@
       <workItem from="1729108608765" duration="37000" />
       <workItem from="1729108778388" duration="5401000" />
       <workItem from="1729136055224" duration="5406000" />
+      <workItem from="1729145161705" duration="131000" />
+      <workItem from="1729567867338" duration="117000" />
+      <workItem from="1729568109992" duration="887000" />
     </task>
     <task id="LOCAL-00001" summary="chore[main]:commit initial">
       <option name="closed" value="true" />
@@ -126,7 +136,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729144898831</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="chore[main]:second commit">
+      <option name="closed" value="true" />
+      <created>1729145282608</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1729145282608</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,6 +155,7 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="chore[main]:commit initial" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore[main]:commit initial" />
+    <MESSAGE value="chore[main]:second commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore[main]:second commit" />
   </component>
 </project>

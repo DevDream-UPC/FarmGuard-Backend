@@ -1,4 +1,10 @@
+using FarmGuard_Backend.Animals.Application.Internal.ComandServices;
+using FarmGuard_Backend.Animals.Domain.Repositories;
+using FarmGuard_Backend.Animals.Domain.Services;
+using FarmGuard_Backend.Animals.Infrastructure.Persistence.EFC.Repositories;
+using FarmGuard_Backend.Shared.Domain.Repositories;
 using FarmGuard_Backend.Shared.Infrastructure.Persistance.EFC.Configuration.Extensions;
+using FarmGuard_Backend.Shared.Infrastructure.Persistance.EFC.Repositories;
 using FarmGuard_Backend.Shared.Interfaces.ASP.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -49,11 +55,18 @@ builder.Services.AddSwaggerGen(
                     Url = new Uri("https://www.apache.org/licenses/LICENSE-2.0.html")
                 }
             });
-        
     });
 
 /*Configure Lowercase URLs*/
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
+
+/*Configurar la inyecion de dependencias*/
+builder.Services.AddScoped<IAnimalRepository, AnimalRepository>();
+builder.Services.AddScoped<IAnimalCommandService, AnimalCommandService>();
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+
 
 /* Add CORS Policy*/
 builder.Services.AddCors(options =>
@@ -63,7 +76,7 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod()
             .AllowAnyHeader());
 });
-/*Configurar la inyecion de dependencias*/
+
 
 var app = builder.Build();
 
