@@ -16,7 +16,7 @@ public class VaccineCommandService(IVaccineRepository vaccineRepository,IUnitOfW
         {
             
             var idAnimal = await externalAnimalService.GetAnimalByAnimalId(command.SerialAnimalId);
-            System.Console.WriteLine(idAnimal);
+            
             if(idAnimal is null) throw new Exception("Animal not Found");
             
             var vaccine = new Vaccine(command.name, command.description, command.date, idAnimal.Value);

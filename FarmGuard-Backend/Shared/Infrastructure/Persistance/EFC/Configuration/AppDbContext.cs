@@ -38,6 +38,10 @@ public class AppDbContext(DbContextOptions options):DbContext(options)
         builder.Entity<Animal>().Property(p=>p.Temperature).IsRequired().HasColumnType("decimal(18,2)");
         builder.Entity<Animal>().Property(p =>p.HearRate).IsRequired().HasColumnType("decimal(18,2)");
         
+        builder.Entity<Inventory>().HasKey(i=>i.Id);
+        builder.Entity<Inventory>().Property(i => i.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Inventory>().Property(i => i.Name).IsRequired();
+        
         /*MedicalHistory Bounded Context*/
         builder.Entity<Vaccine>().HasKey(v => v.Id);
         builder.Entity<Vaccine>().Property(v => v.Id)
@@ -52,6 +56,12 @@ public class AppDbContext(DbContextOptions options):DbContext(options)
             .WithOne(v => v.Animal)
             .HasForeignKey(v => v.AnimalId)
             .HasPrincipalKey(a => a.Id);
+
+        builder.Entity<Inventory>()
+            .HasMany(i => i.Animals)
+            .WithOne(a => a.Inventory)
+            .HasForeignKey(a => a.InventoryId)
+            .HasPrincipalKey(i => i.Id);
         
         //=======================================================
         builder.UseSnakeCaseWithPluralizedTableNamingConvention();
