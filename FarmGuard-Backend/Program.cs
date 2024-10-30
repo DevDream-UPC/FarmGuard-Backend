@@ -55,7 +55,7 @@ builder.Services.AddSwaggerGen(
             {
                 Title = "DevDream.FarmGuard.Api",
                 Version = "v1",
-                Description = "DevDream FarmGuard Plataform Api",
+                Description = "DevDream FarmGuard Platform Api",
                 TermsOfService = new Uri("https://example.com/terms"),
                 License = new OpenApiLicense
                 {
@@ -68,7 +68,7 @@ builder.Services.AddSwaggerGen(
 /*Configure Lowercase URLs*/
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
-/*Configurar la inyecion de dependencias*/
+/*Configurar la inyeccion de dependencias*/
 
 //----------------Animal BoundedContext---------------------
 builder.Services.AddScoped<IAnimalRepository, AnimalRepository>();
