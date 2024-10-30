@@ -1,0 +1,44 @@
+using FarmGuard_Backend.Animals.Domain.Repositories;
+using FarmGuard_Backend.MedicHistory.Application.Internal.OutboundServices;
+using FarmGuard_Backend.MedicHistory.Domain.Model.Commands;
+using FarmGuard_Backend.MedicHistory.Domain.Model.Entities;
+using FarmGuard_Backend.MedicHistory.Domain.Repositories;
+using FarmGuard_Backend.MedicHistory.Domain.Services;
+using FarmGuard_Backend.Shared.Domain.Repositories;
+
+namespace FarmGuard_Backend.MedicHistory.Application.Internal.ComandServices;
+
+public class VaccineCommandService(IVaccineRepository vaccineRepository,IUnitOfWork unitOfWork,ExternalAnimalService externalAnimalService):IVaccineCommandService
+{
+    public async Task<Vaccine?> Handle(CreateVaccineCommand command)
+    {
+        try
+        {
+            
+            var idAnimal = await externalAnimalService.GetAnimalByAnimalId(command.SerialAnimalId);
+            
+            if (idAnimal == null)
+                throw new Exception("Animal not found");
+            
+            var vaccine = new Vaccine(command.name, command.description, command.date, idAnimal.Value);
+            
+            await vaccineRepository.AddAsync(vaccine);
+            
+            
+            await unitOfWork.CompleteAsync();
+            
+            return vaccine;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+
+    }
+
+    public Task<Vaccine?> Handle(DeleteVaccineCommand command)
+    {
+        throw new NotImplementedException();
+    }
+}

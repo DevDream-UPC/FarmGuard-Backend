@@ -1,4 +1,5 @@
 using FarmGuard_Backend.Animals.Domain.Model.ValueObjects;
+using FarmGuard_Backend.MedicHistory.Domain.Model.Entities;
 
 namespace FarmGuard_Backend.Animals.Domain.Model.Aggregates;
 
@@ -22,6 +23,8 @@ public class Animal
 
         UrlIot = urlIot;
         UrlPhoto = urlPhoto;
+
+        Vaccines = new List<Vaccine>();
         
         Location = location;
         HearRate = hearRate;
@@ -32,6 +35,7 @@ public class Animal
     public string Name { get; private set; }
     public ESpecie Specie { get; private set; }
     /*Vacunas*/
+    public ICollection<Vaccine> Vaccines { get; private set; }
     public string UrlIot { get; private set; }
     public string UrlPhoto { get; private set; }
     /*Inventario*/

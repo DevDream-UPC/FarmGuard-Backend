@@ -1,5 +1,6 @@
 using EntityFrameworkCore.CreatedUpdatedDate.Extensions;
 using FarmGuard_Backend.Animals.Domain.Model.Aggregates;
+using FarmGuard_Backend.MedicHistory.Domain.Model.Entities;
 using FarmGuard_Backend.Shared.Infrastructure.Persistance.EFC.Configuration.Extensions.Extensions;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,6 +24,7 @@ public class AppDbContext(DbContextOptions options):DbContext(options)
         builder.Entity<Animal>().HasKey(p => p.Id);
         builder.Entity<Animal>().Property(p => p.Id)
             .IsRequired().ValueGeneratedOnAdd();
+        //Ejemplo de como mapear una valueobject en dbcontext
         builder.Entity<Animal>().OwnsOne(t => t.SerialNumber, n =>
         {
             n.WithOwner().HasForeignKey("id");
@@ -36,6 +38,20 @@ public class AppDbContext(DbContextOptions options):DbContext(options)
         builder.Entity<Animal>().Property(p=>p.Temperature).IsRequired().HasColumnType("decimal(18,2)");
         builder.Entity<Animal>().Property(p =>p.HearRate).IsRequired().HasColumnType("decimal(18,2)");
         
+        /*MedicalHistory Bounded Context*/
+        builder.Entity<Vaccine>().HasKey(v => v.Id);
+        builder.Entity<Vaccine>().Property(v => v.Id)
+            .IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Vaccine>().Property(v => v.Name).IsRequired();
+        builder.Entity<Vaccine>().Property(v => v.Description).IsRequired();
+        builder.Entity<Vaccine>().Property(v => v.Date).IsRequired();
+        
+        /*Relaciones*/
+        builder.Entity<Animal>()
+            .HasMany(a => a.Vaccines)
+            .WithOne(v => v.Animal)
+            .HasForeignKey(v => v.AnimalId)
+            .HasPrincipalKey(a => a.Id);
         
         //=======================================================
         builder.UseSnakeCaseWithPluralizedTableNamingConvention();
