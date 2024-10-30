@@ -10,30 +10,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5bbbec5a-8698-4918-8ffc-318a3ad27a22" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Application/Internal/QueryServices/AnimalQueryService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Interfaces/Acl/IAnimalContextFacade.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Interfaces/Acl/Services/AnimalContextFacade.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Application/Internal/ComandServices/VaccineCommandService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Application/Internal/OutboundServices/ExternalAnimalService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Domain/Model/Commands/CreateVaccineCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Domain/Model/Commands/DeleteVaccineCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Domain/Model/Entities/Vaccine.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Domain/Model/Queries/GetVaccinesByIdAnimal.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Domain/Repositories/IVaccineRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Domain/Services/IVaccineCommandService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Domain/Services/IVaccineQueryService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Infrastructure/Persistence/EFC/Repositories/VaccineRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Interfaces/Rest/Transform/CreateVaccineCommandFromResourceAssembler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Interfaces/Rest/VaccineController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Interfaces/Rest/resources/CreateVaccineResource.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Application/Internal/QueryServices/VaccineQueryService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Interfaces/Rest/Transform/VaccineResourceFromEntityAssembler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Interfaces/Rest/resources/VaccineResource.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Domain/Model/Aggregates/Animal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Domain/Model/Aggregates/Animal.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Interfaces/Rest/AnimalController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Interfaces/Rest/AnimalController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Interfaces/Rest/Transform/AnimalResourceFromEntityAssembler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Interfaces/Rest/Transform/AnimalResourceFromEntityAssembler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Interfaces/Rest/resources/AnimalResource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Interfaces/Rest/resources/AnimalResource.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Interfaces/Acl/Services/AnimalContextFacade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Interfaces/Acl/Services/AnimalContextFacade.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/FarmGuard-Backend.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/FarmGuard-Backend.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Application/Internal/ComandServices/VaccineCommandService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Application/Internal/ComandServices/VaccineCommandService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Application/Internal/OutboundServices/ExternalAnimalService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Application/Internal/OutboundServices/ExternalAnimalService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Domain/Repositories/IVaccineRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Domain/Repositories/IVaccineRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Infrastructure/Persistence/EFC/Repositories/VaccineRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Infrastructure/Persistence/EFC/Repositories/VaccineRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Interfaces/Rest/VaccineController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Interfaces/Rest/VaccineController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/Shared/Infrastructure/Persistance/EFC/Configuration/AppDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/Shared/Infrastructure/Persistance/EFC/Configuration/AppDbContext.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.exe" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.pdb" afterDir="false" />

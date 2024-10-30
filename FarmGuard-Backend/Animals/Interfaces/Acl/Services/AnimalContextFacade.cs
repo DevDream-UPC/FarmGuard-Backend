@@ -9,6 +9,12 @@ public class AnimalContextFacade(IAnimalQueryService animalQueryService, IAnimal
     {
         var getAnimalByAnimalId = new GetAnimalBySerialNumberId(animalId);
         var animal = await animalQueryService.Handle(getAnimalByAnimalId);
+        
+        if (animal == null)
+        {
+            Console.WriteLine($"Animal con Serial ID {animalId} no encontrado en la base de datos.");
+        }
+        
         return animal?.Id ?? 0;
     }
 }
