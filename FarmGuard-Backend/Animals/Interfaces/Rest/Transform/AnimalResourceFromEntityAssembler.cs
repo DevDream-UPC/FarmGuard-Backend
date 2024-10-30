@@ -9,6 +9,8 @@ public class AnimalResourceFromEntityAssembler
     {
         return new AnimalResource(
             entity.Id,
-            entity.Name);
+            entity.Name,
+            entity.SerialNumber.Number,
+            entity.Specie.ToString());
     }
 }

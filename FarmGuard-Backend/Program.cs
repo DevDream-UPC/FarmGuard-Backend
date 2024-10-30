@@ -1,7 +1,16 @@
 using FarmGuard_Backend.Animals.Application.Internal.ComandServices;
+using FarmGuard_Backend.Animals.Application.Internal.QueryServices;
 using FarmGuard_Backend.Animals.Domain.Repositories;
 using FarmGuard_Backend.Animals.Domain.Services;
 using FarmGuard_Backend.Animals.Infrastructure.Persistence.EFC.Repositories;
+using FarmGuard_Backend.Animals.Interfaces.Acl;
+using FarmGuard_Backend.Animals.Interfaces.Acl.Services;
+using FarmGuard_Backend.MedicHistory.Application.Internal.ComandServices;
+using FarmGuard_Backend.MedicHistory.Application.Internal.OutboundServices;
+using FarmGuard_Backend.MedicHistory.Application.Internal.QueryServices;
+using FarmGuard_Backend.MedicHistory.Domain.Repositories;
+using FarmGuard_Backend.MedicHistory.Domain.Services;
+using FarmGuard_Backend.MedicHistory.Infrastructure.Persistence.EFC.Repositories;
 using FarmGuard_Backend.Shared.Domain.Repositories;
 using FarmGuard_Backend.Shared.Infrastructure.Persistance.EFC.Configuration.Extensions;
 using FarmGuard_Backend.Shared.Infrastructure.Persistance.EFC.Repositories;
@@ -61,12 +70,26 @@ builder.Services.AddSwaggerGen(
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
 /*Configurar la inyecion de dependencias*/
+
+//----------------Animal BoundedContext---------------------
 builder.Services.AddScoped<IAnimalRepository, AnimalRepository>();
 builder.Services.AddScoped<IAnimalCommandService, AnimalCommandService>();
+builder.Services.AddScoped<IAnimalQueryService, AnimalQueryService>();
+
+builder.Services.AddScoped<IIventoryRepository, InventoryRepository>();
+builder.Services.AddScoped<IInventoryCommandService, InventoryCommandService>();
+builder.Services.AddScoped<IInventoryQueryService, InventoryQueryService>();
+
+//----------------MedicalHistory BoundedContext---------------------
+builder.Services.AddScoped<IVaccineRepository, VaccineRepository>();
+builder.Services.AddScoped<IVaccineCommandService, VaccineCommandService>();
+builder.Services.AddScoped<IVaccineQueryService,VaccineQueryService>();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-
+//----------------External Services BoundedContext---------------------
+builder.Services.AddScoped<IAnimalContextFacade, AnimalContextFacade>();
+builder.Services.AddScoped<ExternalAnimalService>();
 
 /* Add CORS Policy*/
 builder.Services.AddCors(options =>

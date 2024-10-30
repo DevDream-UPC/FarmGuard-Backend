@@ -7,5 +7,6 @@ public record CreateAnimalCommand(
     string urlPhoto, 
     string location, 
     long hearRate,
-    long temperature
+    long temperature,
+    int inventoryId
     );
