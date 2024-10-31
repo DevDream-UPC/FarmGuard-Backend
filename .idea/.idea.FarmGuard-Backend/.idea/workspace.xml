@@ -9,42 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5bbbec5a-8698-4918-8ffc-318a3ad27a22" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/Notifications/Application/Internal/CommandServices/NotificationCommandService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/Notifications/Domain/Model/Aggregates/Notification.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/Notifications/Domain/Repositories/INotificationRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/Notifications/Infrastructure/Persistence/EFC/Repositories/NotificationRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/Shared/Infrastructure/Persistance/EFC/Configuration/AppDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/Shared/Infrastructure/Persistance/EFC/Configuration/AppDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.exe" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/bin/Debug/net8.0/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/bin/Debug/net8.0/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.MvcApplicationPartsAssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.MvcApplicationPartsAssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.genruntimeconfig.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.sourcelink.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/apphost.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/ref/FarmGuard-Backend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/ref/FarmGuard-Backend.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/refint/FarmGuard-Backend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/refint/FarmGuard-Backend.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/FarmGuard-Backend.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/FarmGuard-Backend.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/FarmGuard-Backend.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/FarmGuard-Backend.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/rider.project.restore.info" afterDir="false" />
-    </list>
+    <list default="true" id="5bbbec5a-8698-4918-8ffc-318a3ad27a22" name="Changes" comment="feat[main]: fixed location of dockerfile" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,7 +21,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="feat/add-notifications" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -84,8 +49,20 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://D:/Proyectos/06-C#/FarmGuard-Backend/FarmGuard-Backend/Animals/Domain/Model/Aggregates/Animal.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Proyectos/06-C#/FarmGuard-Backend/FarmGuard-Backend/Animals/Interfaces/Acl/Services/AnimalContextFacade.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Proyectos/06-C#/FarmGuard-Backend/FarmGuard-Backend/Shared/Infrastructure/Persistance/EFC/Configuration/AppDbContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Proyectos/06-C#/FarmGuard-Backend/FarmGuard-Backend/Shared/Infrastructure/Persistance/EFC/Configuration/AppDbContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Proyectos/06-C#/FarmGuard-Backend/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/FarmGuard-Backend/obj/Release/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
+  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
+  <component name="KubernetesApiProvider"><![CDATA[{
+  "isMigrated": true
+}]]></component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -95,23 +72,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.FarmGuard-Backend: http.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Launch Settings Profile.FarmGuard-Backend: https.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feat/add-notifications&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.FarmGuard-Backend: http.executor": "Run",
+    ".NET Launch Settings Profile.FarmGuard-Backend: https.executor": "Run",
+    "Docker.FarmGuard-Backend/Dockerfile.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "#5 on develop",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.FarmGuard-Backend: https">
+}]]></component>
+  <component name="RunManager" selected="Docker.FarmGuard-Backend/Dockerfile">
     <configuration name="FarmGuard-Backend: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/FarmGuard-Backend/FarmGuard-Backend.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
@@ -157,6 +135,31 @@
         <option name="Build" />
       </method>
     </configuration>
+    <configuration name="FarmGuard-Backend/Dockerfile" type="docker-deploy" factoryName="dockerfile" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="imageTag" value="farmguard-backend" />
+          <option name="containerName" value="farmguard-backend" />
+          <option name="contextFolderPath" value="D:\Proyectos\06-C#\FarmGuard-Backend" />
+          <option name="portBindings">
+            <list>
+              <DockerPortBindingImpl>
+                <option name="containerPort" value="8080" />
+                <option name="hostIp" value="127.0.0.1" />
+                <option name="hostPort" value="8080" />
+              </DockerPortBindingImpl>
+            </list>
+          </option>
+          <option name="sourceFilePath" value="FarmGuard-Backend/Dockerfile" />
+        </settings>
+      </deployment>
+      <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -181,7 +184,23 @@
       <option name="project" value="LOCAL" />
       <updated>1729144898831</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat[develop]: added Dockerfile">
+      <option name="closed" value="true" />
+      <created>1730361815834</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1730361815834</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feat[main]: fixed location of dockerfile">
+      <option name="closed" value="true" />
+      <created>1730362919942</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1730362919942</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,9 +208,22 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="chore[main]:commit initial" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore[main]:commit initial" />
+    <MESSAGE value="feat[develop]: added Dockerfile" />
+    <MESSAGE value="feat[main]: fixed location of dockerfile" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat[main]: fixed location of dockerfile" />
   </component>
 </project>
