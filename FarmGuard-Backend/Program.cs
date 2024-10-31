@@ -1,4 +1,23 @@
+using FarmGuard_Backend.Animals.Application.Internal.ComandServices;
+using FarmGuard_Backend.Animals.Application.Internal.QueryServices;
+using FarmGuard_Backend.Animals.Domain.Repositories;
+using FarmGuard_Backend.Animals.Domain.Services;
+using FarmGuard_Backend.Animals.Infrastructure.Persistence.EFC.Repositories;
+using FarmGuard_Backend.Animals.Interfaces.Acl;
+using FarmGuard_Backend.Animals.Interfaces.Acl.Services;
+using FarmGuard_Backend.MedicHistory.Application.Internal.ComandServices;
+using FarmGuard_Backend.MedicHistory.Application.Internal.OutboundServices;
+using FarmGuard_Backend.MedicHistory.Application.Internal.QueryServices;
+using FarmGuard_Backend.MedicHistory.Domain.Repositories;
+using FarmGuard_Backend.MedicHistory.Domain.Services;
+using FarmGuard_Backend.MedicHistory.Infrastructure.Persistence.EFC.Repositories;
+using FarmGuard_Backend.Notifications.Application.Internal.CommandServices;
+using FarmGuard_Backend.Notifications.Domain.Repositories;
+using FarmGuard_Backend.Notifications.Domain.Services;
+using FarmGuard_Backend.Notifications.Infrastructure.Persistence.EFC.Repositories;
+using FarmGuard_Backend.Shared.Domain.Repositories;
 using FarmGuard_Backend.Shared.Infrastructure.Persistance.EFC.Configuration.Extensions;
+using FarmGuard_Backend.Shared.Infrastructure.Persistance.EFC.Repositories;
 using FarmGuard_Backend.Shared.Interfaces.ASP.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -10,7 +29,9 @@ builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddControllers( options => options.Conventions.Add(new KebabCaseRouteNamingConvention()));
 
 /*Añadir Conexion DB*/
-var connectionSrting = builder.Configuration.GetConnectionString("DefaultConnection");
+/*
+*/
+var connectionSrting = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING") ?? builder.Configuration.GetConnectionString("DefaultConnection");
 /*Configurar Contexto de la DB and niveles de loggin*/
 
 builder.Services.AddDbContext<AppDbContext>(
@@ -41,7 +62,7 @@ builder.Services.AddSwaggerGen(
             {
                 Title = "DevDream.FarmGuard.Api",
                 Version = "v1",
-                Description = "DevDream FarmGuard Plataform Api",
+                Description = "DevDream FarmGuard Platform Api",
                 TermsOfService = new Uri("https://example.com/terms"),
                 License = new OpenApiLicense
                 {
@@ -49,11 +70,36 @@ builder.Services.AddSwaggerGen(
                     Url = new Uri("https://www.apache.org/licenses/LICENSE-2.0.html")
                 }
             });
-        
     });
 
 /*Configure Lowercase URLs*/
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
+
+/*Configurar la inyeccion de dependencias*/
+
+//----------------Animal BoundedContext---------------------
+builder.Services.AddScoped<IAnimalRepository, AnimalRepository>();
+builder.Services.AddScoped<IAnimalCommandService, AnimalCommandService>();
+builder.Services.AddScoped<IAnimalQueryService, AnimalQueryService>();
+
+builder.Services.AddScoped<IIventoryRepository, InventoryRepository>();
+builder.Services.AddScoped<IInventoryCommandService, InventoryCommandService>();
+builder.Services.AddScoped<IInventoryQueryService, InventoryQueryService>();
+
+//----------------MedicalHistory BoundedContext---------------------
+builder.Services.AddScoped<IVaccineRepository, VaccineRepository>();
+builder.Services.AddScoped<IVaccineCommandService, VaccineCommandService>();
+builder.Services.AddScoped<IVaccineQueryService,VaccineQueryService>();
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+//----------------Notification BoundedContext---------------------
+builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
+builder.Services.AddScoped<INotificationCommandService,NotificationCommandService>();
+
+//----------------External Services BoundedContext---------------------
+builder.Services.AddScoped<IAnimalContextFacade, AnimalContextFacade>();
+builder.Services.AddScoped<ExternalAnimalService>();
 
 /* Add CORS Policy*/
 builder.Services.AddCors(options =>
@@ -63,7 +109,7 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod()
             .AllowAnyHeader());
 });
-/*Configurar la inyecion de dependencias*/
+
 
 var app = builder.Build();
 
