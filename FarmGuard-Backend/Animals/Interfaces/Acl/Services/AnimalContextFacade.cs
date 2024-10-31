@@ -11,4 +11,9 @@ public class AnimalContextFacade(IAnimalQueryService animalQueryService, IAnimal
         var animal = await animalQueryService.Handle(getAnimalByAnimalId);
         return animal?.Id ?? 0;
     }
+
+    public Task<int> FetchAnimalById(int id)
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -8,16 +8,9 @@ using FarmGuard_Backend.Shared.Infrastructure.Persistance.EFC.Configuration.Exte
 namespace FarmGuard_Backend.Notifications.Infrastructure.Persistence.EFC.Repositories
 {
     // Implementación del repositorio de notificaciones
-    public class NotificationRepository : BaseRepository<Notification>, INotificationRepository
+    public class NotificationRepository (AppDbContext context): BaseRepository<Notification>(context), INotificationRepository
     {
-        public NotificationRepository(AppDbContext context) : base(context)
-        {
-        }
+       
 
-        // Método para agregar una notificación a la base de datos
-        public async Task AddAsync(Notification notification)
-        {
-            await Context.Set<Notification>().AddAsync(notification);
-        }
     }
 }

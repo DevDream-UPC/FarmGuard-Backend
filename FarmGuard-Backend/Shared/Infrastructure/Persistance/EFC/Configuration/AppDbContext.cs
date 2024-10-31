@@ -67,7 +67,13 @@ public class AppDbContext : DbContext
         builder.Entity<Notification>().Property(n => n.Title).IsRequired();
         builder.Entity<Notification>().Property(n => n.AnimalId).IsRequired();
         builder.Entity<Notification>().Property(n => n.Description).IsRequired();
-        
+        builder.Entity<Notification>().Property(n => n.State).IsRequired();
+            /*
+        builder.Entity<Animal>().OwnsOne(t => t.SerialNumber, n =>
+        {
+            n.WithOwner().HasForeignKey("id");
+            n.Property(a => a.Number).HasColumnName("id_animal");
+        });*/
         //=======================================================
         builder.UseSnakeCaseWithPluralizedTableNamingConvention();
     }

@@ -14,4 +14,11 @@ public class AnimalRepository(AppDbContext context):BaseRepository<Animal>(conte
     {
        return await Context.Set<Animal>().FirstOrDefaultAsync( A => A.SerialNumber.Number.Equals(serialNumber));
     }
+    
+    /*dbcontext ya tienes las funciones de
+     añadir
+     update
+     delete
+     obtenerUnaLista de elementos
+     */
 }

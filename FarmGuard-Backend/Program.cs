@@ -10,6 +10,10 @@ using FarmGuard_Backend.MedicHistory.Application.Internal.OutboundServices;
 using FarmGuard_Backend.MedicHistory.Domain.Repositories;
 using FarmGuard_Backend.MedicHistory.Domain.Services;
 using FarmGuard_Backend.MedicHistory.Infrastructure.Persistence.EFC.Repositories;
+using FarmGuard_Backend.Notifications.Application.Internal.CommandServices;
+using FarmGuard_Backend.Notifications.Domain.Repositories;
+using FarmGuard_Backend.Notifications.Domain.Services;
+using FarmGuard_Backend.Notifications.Infrastructure.Persistence.EFC.Repositories;
 using FarmGuard_Backend.Shared.Domain.Repositories;
 using FarmGuard_Backend.Shared.Infrastructure.Persistance.EFC.Configuration.Extensions;
 using FarmGuard_Backend.Shared.Infrastructure.Persistance.EFC.Repositories;
@@ -80,6 +84,10 @@ builder.Services.AddScoped<IVaccineRepository, VaccineRepository>();
 builder.Services.AddScoped<IVaccineCommandService, VaccineCommandService>();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+//----------------Notification BoundedContext---------------------
+builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
+builder.Services.AddScoped<INotificationCommandService,NotificationCommandService>();
 
 //----------------External Services BoundedContext---------------------
 builder.Services.AddScoped<IAnimalContextFacade, AnimalContextFacade>();
