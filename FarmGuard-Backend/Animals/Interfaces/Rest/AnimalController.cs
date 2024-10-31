@@ -13,12 +13,12 @@ namespace FarmGuard_Backend.Animals.Interfaces.Rest;
 [Route("api/v1/animals")]
 public class AnimalController(IAnimalCommandService animalCommandService, IAnimalQueryService animalQueryService):ControllerBase
 {
-    [HttpPost]
-    public async Task<IActionResult> CreateAnimal([FromBody] CreateAnimalResource resource)
+    [HttpPost("{idInventory}")]
+    public async Task<IActionResult> CreateAnimal([FromBody] CreateAnimalResource resource, int idInventory)
     {
         try
         {
-            var createAnimalCommand = CreateAnimalCommandFromResourceAssembler.ToCommandFromResource(resource);
+            var createAnimalCommand = CreateAnimalCommandFromResourceAssembler.ToCommandFromResource(resource,idInventory);
             var animal = await animalCommandService.Handle(createAnimalCommand);
             
             if (animal == null) return BadRequest();

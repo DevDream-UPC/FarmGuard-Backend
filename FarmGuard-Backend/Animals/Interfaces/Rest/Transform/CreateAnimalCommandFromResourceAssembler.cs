@@ -5,7 +5,7 @@ namespace FarmGuard_Backend.Animals.Interfaces.Rest.Transform;
 
 public class CreateAnimalCommandFromResourceAssembler
 {
-    public static CreateAnimalCommand ToCommandFromResource(CreateAnimalResource resource)
+    public static CreateAnimalCommand ToCommandFromResource(CreateAnimalResource resource,int idInventory)
     {
         return new CreateAnimalCommand(
             resource.name, 
@@ -14,6 +14,7 @@ public class CreateAnimalCommandFromResourceAssembler
             resource.urlPhoto,
             resource.location, 
             resource.hearRate, 
-            resource.temperature);
+            resource.temperature,
+            idInventory);
     }
 }

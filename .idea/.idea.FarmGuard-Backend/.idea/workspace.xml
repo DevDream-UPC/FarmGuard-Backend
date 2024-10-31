@@ -10,42 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5bbbec5a-8698-4918-8ffc-318a3ad27a22" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Application/Internal/QueryServices/AnimalQueryService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Interfaces/Acl/IAnimalContextFacade.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Interfaces/Acl/Services/AnimalContextFacade.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Application/Internal/ComandServices/VaccineCommandService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Application/Internal/OutboundServices/ExternalAnimalService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Domain/Model/Commands/CreateVaccineCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Domain/Model/Commands/DeleteVaccineCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Domain/Model/Entities/Vaccine.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Domain/Model/Queries/GetVaccinesByIdAnimal.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Domain/Repositories/IVaccineRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Domain/Services/IVaccineCommandService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Domain/Services/IVaccineQueryService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Infrastructure/Persistence/EFC/Repositories/VaccineRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Interfaces/Rest/Transform/CreateVaccineCommandFromResourceAssembler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Interfaces/Rest/VaccineController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/MedicHistory/Interfaces/Rest/resources/CreateVaccineResource.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Domain/Model/Aggregates/Inventory.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Domain/Model/Commands/CreateInventoryCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Domain/Repositories/IIventoryRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Application/Internal/ComandServices/AnimalCommandService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Application/Internal/ComandServices/AnimalCommandService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Domain/Model/Aggregates/Animal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Domain/Model/Aggregates/Animal.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Interfaces/Rest/AnimalController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Interfaces/Rest/AnimalController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Interfaces/Rest/Transform/AnimalResourceFromEntityAssembler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Interfaces/Rest/Transform/AnimalResourceFromEntityAssembler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Interfaces/Rest/resources/AnimalResource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Interfaces/Rest/resources/AnimalResource.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/FarmGuard-Backend.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/FarmGuard-Backend.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/Shared/Infrastructure/Persistance/EFC/Configuration/AppDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/Shared/Infrastructure/Persistance/EFC/Configuration/AppDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.exe" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.sourcelink.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/apphost.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/ref/FarmGuard-Backend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/ref/FarmGuard-Backend.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/refint/FarmGuard-Backend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/refint/FarmGuard-Backend.dll" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +150,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729144898831</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat[add-vaccine]: added endpoints get all Vaccines by SerialIdAnimal">
+      <option name="closed" value="true" />
+      <created>1730276127064</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1730276127064</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,6 +169,7 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="chore[main]:commit initial" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore[main]:commit initial" />
+    <MESSAGE value="feat[add-vaccine]: added endpoints get all Vaccines by SerialIdAnimal" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat[add-vaccine]: added endpoints get all Vaccines by SerialIdAnimal" />
   </component>
 </project>

@@ -19,7 +19,6 @@
 
     <ItemGroup>
       <Folder Include="Animals\Domain\Model\Entities\" />
-      <Folder Include="MedicHistory\Application\Internal\QueryServices\" />
       <Folder Include="MedicHistory\Domain\Model\Aggregates\" />
       <Folder Include="MedicHistory\Domain\Model\ValueObjects\" />
     </ItemGroup>
