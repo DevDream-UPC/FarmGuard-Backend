@@ -6,12 +6,16 @@ using FarmGuard_Backend.Shared.Domain.Repositories;
 
 namespace FarmGuard_Backend.Animals.Application.Internal.ComandServices;
 
-public class AnimalCommandService(IAnimalRepository animalRepository,IUnitOfWork unitOfWork):IAnimalCommandService
+public class AnimalCommandService(IAnimalRepository animalRepository,IUnitOfWork unitOfWork,IIventoryRepository inIventoryRepository):IAnimalCommandService
 {
     public async Task<Animal?> Handle(CreateAnimalCommand command)
     {
         try
         {
+            /*Aca iria las reglas del negocio*/
+            var inventory = await inIventoryRepository.FindByIdAsync(command.inventoryId);
+            if (inventory is null) throw new Exception("Inventory not found");
+            
             /*Aqui se crea la la entidad animal*/
             var animal = new Animal(
                 command.name, 
@@ -20,8 +24,8 @@ public class AnimalCommandService(IAnimalRepository animalRepository,IUnitOfWork
                 command.urlPhoto, 
                 command.location,
                 command.hearRate, 
-                command.temperature);
-            /*Aca iria las reglas del negocio*/
+                command.temperature,inventory.Id);
+            
             
             /*Aca se guarda en db por transaccion*/
             await animalRepository.AddAsync(animal);

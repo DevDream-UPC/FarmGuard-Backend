@@ -18,8 +18,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Animals\Application\Internal\QueryServices\" />
       <Folder Include="Animals\Domain\Model\Entities\" />
+      <Folder Include="MedicHistory\Domain\Model\Aggregates\" />
+      <Folder Include="MedicHistory\Domain\Model\ValueObjects\" />
     </ItemGroup>
 
 </Project>
