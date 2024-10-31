@@ -9,7 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5bbbec5a-8698-4918-8ffc-318a3ad27a22" name="Changes" comment="feat[main]: fixed location of dockerfile" />
+    <list default="true" id="5bbbec5a-8698-4918-8ffc-318a3ad27a22" name="Changes" comment="feat[main]: fixed location dockerfile">
+      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/Dockerfile" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -200,7 +203,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730362919942</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="feat[main]: fixed location dockerfile">
+      <option name="closed" value="true" />
+      <created>1730363159587</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1730363159587</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -224,6 +235,7 @@
     <MESSAGE value="chore[main]:commit initial" />
     <MESSAGE value="feat[develop]: added Dockerfile" />
     <MESSAGE value="feat[main]: fixed location of dockerfile" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat[main]: fixed location of dockerfile" />
+    <MESSAGE value="feat[main]: fixed location dockerfile" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat[main]: fixed location dockerfile" />
   </component>
 </project>

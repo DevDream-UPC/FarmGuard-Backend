@@ -5,10 +5,8 @@ EXPOSE 8080
 EXPOSE 8081
 ENV DB_CONNECTION_STRING="server=34.125.41.179;port=3306;user=root;password=devdream33216;database=db-farmguard"
 
-
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
-
 WORKDIR /src
 COPY ["FarmGuard-Backend/FarmGuard-Backend.csproj", "FarmGuard-Backend/"]
 RUN dotnet restore "FarmGuard-Backend/FarmGuard-Backend.csproj"
