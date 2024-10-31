@@ -17,4 +17,9 @@ public class AnimalContextFacade(IAnimalQueryService animalQueryService, IAnimal
         
         return animal?.Id ?? 0;
     }
+
+    public Task<int> FetchAnimalById(int id)
+    {
+        throw new NotImplementedException();
+    }
 }
