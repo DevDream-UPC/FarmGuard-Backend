@@ -29,7 +29,9 @@ builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddControllers( options => options.Conventions.Add(new KebabCaseRouteNamingConvention()));
 
 /*Añadir Conexion DB*/
-var connectionSrting = builder.Configuration.GetConnectionString("DefaultConnection");
+/*
+*/
+var connectionSrting = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING") ?? builder.Configuration.GetConnectionString("DefaultConnection");
 /*Configurar Contexto de la DB and niveles de loggin*/
 
 builder.Services.AddDbContext<AppDbContext>(

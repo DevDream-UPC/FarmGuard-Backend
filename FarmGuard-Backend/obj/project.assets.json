@@ -8083,24 +8083,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\aless\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\braya\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\aless\\RiderProjects\\SW51-Apps Web\\FarmGuard-Backend\\FarmGuard-Backend\\FarmGuard-Backend.csproj",
+      "projectUniqueName": "D:\\Proyectos\\06-C#\\FarmGuard-Backend\\FarmGuard-Backend\\FarmGuard-Backend.csproj",
       "projectName": "FarmGuard-Backend",
-      "projectPath": "C:\\Users\\aless\\RiderProjects\\SW51-Apps Web\\FarmGuard-Backend\\FarmGuard-Backend\\FarmGuard-Backend.csproj",
-      "packagesPath": "C:\\Users\\aless\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\aless\\RiderProjects\\SW51-Apps Web\\FarmGuard-Backend\\FarmGuard-Backend\\obj\\",
+      "projectPath": "D:\\Proyectos\\06-C#\\FarmGuard-Backend\\FarmGuard-Backend\\FarmGuard-Backend.csproj",
+      "packagesPath": "C:\\Users\\braya\\.nuget\\packages\\",
+      "outputPath": "D:\\Proyectos\\06-C#\\FarmGuard-Backend\\FarmGuard-Backend\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\aless\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\braya\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8108,6 +8103,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -8179,7 +8175,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
