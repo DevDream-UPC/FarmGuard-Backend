@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FarmGuard-Backend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cb043dcf98843fa3a697c6ab1a1d213ccbe0fff0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9ceb2c25231b7a30c6c1bc96c6ae26ded89af204")]
 [assembly: System.Reflection.AssemblyProductAttribute("FarmGuard-Backend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FarmGuard-Backend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

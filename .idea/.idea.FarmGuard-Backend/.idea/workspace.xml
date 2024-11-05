@@ -10,8 +10,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5bbbec5a-8698-4918-8ffc-318a3ad27a22" name="Changes" comment="feat[main]: fixed location dockerfile">
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/profile/Domain/Model/Aggregate/Profile.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/profile/Domain/Model/Commands/DeleteProfileByIdCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/profile/Domain/Model/Commands/UpdateProfileCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/profile/Domain/Model/Queries/GetProfileByEmailAddressQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/profile/Domain/Model/Queries/GetProfileByIdQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/profile/Domain/Model/ValueObjects/EmailAddress.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/profile/Domain/Model/ValueObjects/PersonName.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/FarmGuard-Backend.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/FarmGuard-Backend.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.exe" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/ref/FarmGuard-Backend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/ref/FarmGuard-Backend.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/refint/FarmGuard-Backend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/refint/FarmGuard-Backend.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/rider.project.model.nuget.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +42,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feat/add-notifications" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -62,10 +80,10 @@
     <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -81,7 +99,7 @@
     ".NET Launch Settings Profile.FarmGuard-Backend: https.executor": "Run",
     "Docker.FarmGuard-Backend/Dockerfile.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "#5 on develop",
+    "git-widget-placeholder": "feat/endpoint-user",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -160,7 +178,10 @@
       <method v="2" />
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
-      <deployment type="dockerfile" />
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
+      <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
       <method v="2" />
     </configuration>
   </component>
