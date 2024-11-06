@@ -2,6 +2,8 @@ using FarmGuard_Backend.Animals.Application.Internal.QueryServices;
 using FarmGuard_Backend.Animals.Domain.Model.Commands;
 using FarmGuard_Backend.Animals.Domain.Model.Queries;
 using FarmGuard_Backend.Animals.Domain.Services;
+using FarmGuard_Backend.Animals.Interfaces.Rest.resources;
+using FarmGuard_Backend.Animals.Interfaces.Rest.Transform;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FarmGuard_Backend.Animals.Interfaces.Rest;
@@ -11,11 +13,11 @@ namespace FarmGuard_Backend.Animals.Interfaces.Rest;
 public class InventoryController(IInventoryCommandService inventoryCommandService,IInventoryQueryService inventoryQueryService):ControllerBase
 {
     [HttpPost]
-    public async Task<ActionResult> CreateInventory()
+    public async Task<ActionResult> CreateInventory([FromBody] CreateInventory resource)
     {
         try
         {
-            var createInventoryCommand = new CreateInventoryCommand();
+            var createInventoryCommand = new CreateInventoryCommand(resource.Name, resource.ProfileId);
             var inventory = await inventoryCommandService.Handle(createInventoryCommand);
             if (inventory == null) return BadRequest("Inventory is null");
             return Ok(inventory);
@@ -36,7 +38,10 @@ public class InventoryController(IInventoryCommandService inventoryCommandServic
             var getInventoryByIdQuery = new GetInventoryByIdQueries(id);
             var inventory = await inventoryQueryService.Handle(getInventoryByIdQuery);
             if (inventory == null) return BadRequest($"Inventory not found with id: {id}");
-            return Ok(inventory);
+            
+            var resource = InventoryResourceFromEntityAssembler.ToEntityFromResource(inventory);
+            
+            return Ok(resource);
 
         }
         catch (Exception e)

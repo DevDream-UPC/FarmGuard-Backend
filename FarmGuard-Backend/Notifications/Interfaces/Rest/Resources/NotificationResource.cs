@@ -4,5 +4,4 @@ public record NotificationResource(
     int Id, 
     string Title, 
     string Description,
-    int AnimalId, 
     string state);

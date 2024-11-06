@@ -1,4 +1,5 @@
 using FarmGuard_Backend.Animals.Application.Internal.ComandServices;
+using FarmGuard_Backend.Animals.Application.Internal.OutboundServices;
 using FarmGuard_Backend.Animals.Application.Internal.QueryServices;
 using FarmGuard_Backend.Animals.Domain.Repositories;
 using FarmGuard_Backend.Animals.Domain.Services;
@@ -12,10 +13,19 @@ using FarmGuard_Backend.MedicHistory.Domain.Repositories;
 using FarmGuard_Backend.MedicHistory.Domain.Services;
 using FarmGuard_Backend.MedicHistory.Infrastructure.Persistence.EFC.Repositories;
 using FarmGuard_Backend.Notifications.Application.Internal.CommandServices;
+using FarmGuard_Backend.Notifications.Application.Internal.QueryService;
 using FarmGuard_Backend.Notifications.Domain.Repositories;
 using FarmGuard_Backend.Notifications.Domain.Services;
 using FarmGuard_Backend.Notifications.Infrastructure.Persistence.EFC.Repositories;
+using FarmGuard_Backend.Notifications.Interfaces.Rest.Acl;
+using FarmGuard_Backend.Notifications.Interfaces.Rest.Acl.Services;
+using FarmGuard_Backend.profile.Application.Internal.ComandServices;
+using FarmGuard_Backend.profile.Application.Internal.OutboundServices;
+using FarmGuard_Backend.profile.Domain.Repositories;
+using FarmGuard_Backend.profile.Domain.Services;
+using FarmGuard_Backend.profile.Infrastructure.Persistence.EFC.Repositories;
 using FarmGuard_Backend.Shared.Domain.Repositories;
+using FarmGuard_Backend.Shared.Infrastructure.Persistance.EFC.Configuration;
 using FarmGuard_Backend.Shared.Infrastructure.Persistance.EFC.Configuration.Extensions;
 using FarmGuard_Backend.Shared.Infrastructure.Persistance.EFC.Repositories;
 using FarmGuard_Backend.Shared.Interfaces.ASP.Configuration;
@@ -91,15 +101,26 @@ builder.Services.AddScoped<IVaccineRepository, VaccineRepository>();
 builder.Services.AddScoped<IVaccineCommandService, VaccineCommandService>();
 builder.Services.AddScoped<IVaccineQueryService,VaccineQueryService>();
 
+//----------------Profile BoundedContext---------------------
+builder.Services.AddScoped<IProfileRepository,ProfileRepository>();
+builder.Services.AddScoped<IProfileCommandService,ProfileCommandService>();
+
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 //----------------Notification BoundedContext---------------------
 builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
 builder.Services.AddScoped<INotificationCommandService,NotificationCommandService>();
+builder.Services.AddScoped<INotificationQuerieService, NotificationQueryService>();
 
 //----------------External Services BoundedContext---------------------
 builder.Services.AddScoped<IAnimalContextFacade, AnimalContextFacade>();
 builder.Services.AddScoped<ExternalAnimalService>();
+
+builder.Services.AddScoped<IInventoryContextFacade, InventoryContextFacade>();
+builder.Services.AddScoped<ExternalInventoryService>();
+
+builder.Services.AddScoped<INotificationContextFacade, NotificationContextFacade>();
+builder.Services.AddScoped<ExternalNotificationService>();
 
 /* Add CORS Policy*/
 builder.Services.AddCors(options =>

@@ -36,8 +36,14 @@ public class VaccineCommandService(IVaccineRepository vaccineRepository,IUnitOfW
 
     }
 
-    public Task<Vaccine?> Handle(DeleteVaccineCommand command)
+    public async Task<Vaccine?> Handle(DeleteVaccineCommand command)
     {
-        throw new NotImplementedException();
+        var vaccine = await vaccineRepository.FindByIdAsync(command.Id);
+        if(vaccine is null) throw new Exception("Vacuna");
+        vaccineRepository.Remove(vaccine);
+        await unitOfWork.CompleteAsync();
+        return vaccine;
+
+
     }
 }

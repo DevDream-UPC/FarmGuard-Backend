@@ -6,4 +6,6 @@ namespace FarmGuard_Backend.Animals.Domain.Repositories;
 public interface IAnimalRepository:IBaseRepository<Animal>
 {
     Task<Animal?> FindAnimalBySerialNumberIdAsync(string serialNumber);
+    
+    Task<IEnumerable<Animal>> FindAnimalsByIdInventory(int idInventory);
 }

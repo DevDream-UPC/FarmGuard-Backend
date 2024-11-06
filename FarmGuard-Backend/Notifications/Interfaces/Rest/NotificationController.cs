@@ -1,5 +1,6 @@
 using FarmGuard_Backend.Notifications.Domain.Model.Aggregates;
 using FarmGuard_Backend.Notifications.Domain.Model.Commands;
+using FarmGuard_Backend.Notifications.Domain.Model.queries;
 using FarmGuard_Backend.Notifications.Domain.Services;
 using FarmGuard_Backend.Notifications.Interfaces.Rest.Resources;
 using FarmGuard_Backend.Notifications.Interfaces.Rest.Transform;
@@ -8,8 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace FarmGuard_Backend.Notifications.Interfaces.Rest;
 
 [Controller]
-[Route("/api/v1/notification")]
-public class NotificationController(INotificationCommandService notificationCommandService): ControllerBase
+[Route("/api/v1/notifications")]
+public class NotificationController(INotificationCommandService notificationCommandService,INotificationQuerieService notificationQuerieService): ControllerBase
 {
     [HttpPost]
     public async Task<IActionResult> CreateNotification([FromBody]CreateNotificationResource createResource)
@@ -29,6 +30,14 @@ public class NotificationController(INotificationCommandService notificationComm
         
         
         //Expones el recurso
+        return Ok(resource);
+    }
+
+    [HttpGet("{inventoryId}")]
+    public async Task<IActionResult> GetAllNotificationsByIdInventory(int inventoryId)
+    {
+        var notifications = await notificationQuerieService.Handle(new GetAllNotificationsByIdInventory(inventoryId));
+        var resource = notifications.Select(NotificationResourceFromEntityAssembler.ToEntityFromResource);
         return Ok(resource);
     }
 }
