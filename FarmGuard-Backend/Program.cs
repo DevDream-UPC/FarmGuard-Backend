@@ -21,6 +21,7 @@ using FarmGuard_Backend.Notifications.Interfaces.Rest.Acl;
 using FarmGuard_Backend.Notifications.Interfaces.Rest.Acl.Services;
 using FarmGuard_Backend.profile.Application.Internal.ComandServices;
 using FarmGuard_Backend.profile.Application.Internal.OutboundServices;
+using FarmGuard_Backend.profile.Application.Internal.QueryServices;
 using FarmGuard_Backend.profile.Domain.Repositories;
 using FarmGuard_Backend.profile.Domain.Services;
 using FarmGuard_Backend.profile.Infrastructure.Persistence.EFC.Repositories;
@@ -104,6 +105,7 @@ builder.Services.AddScoped<IVaccineQueryService,VaccineQueryService>();
 //----------------Profile BoundedContext---------------------
 builder.Services.AddScoped<IProfileRepository,ProfileRepository>();
 builder.Services.AddScoped<IProfileCommandService,ProfileCommandService>();
+builder.Services.AddScoped<IProfileQueryService, ProfileQueryService>();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 

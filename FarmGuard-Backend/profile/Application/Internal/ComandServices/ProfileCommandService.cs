@@ -55,9 +55,18 @@ public class ProfileCommandService(IProfileRepository profileRepository,IUnitOfW
         
     }
 
-    public Task<Profile?> Handle(UpdateProfileCommand command)
+    public async Task<Profile?> Handle(UpdateProfileCommand command)
     {
-        return null;
+        var profile = await profileRepository.FindByIdAsync(command.Id);
+        if(profile is null) throw new Exception($"No se pudo encontrar el perfil con el Id {command.Id}");
+        
+        profile.UpdateName(command.FirstName,command.LastName);
+        profile.UpdateEmail(command.Email);
+        profile.UpdateUrlPhoto(command.UrlPhoto);
+        
+        profileRepository.Update(profile);
+        await unitOfWork.CompleteAsync();
+        return profile;
     }
 
     public async Task<Profile?> Handle(DeleteProfileByIdCommand command)
