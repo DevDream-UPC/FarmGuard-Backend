@@ -7,6 +7,10 @@ public class CreateVaccineCommandFromResourceAssembler
 {
     public static CreateVaccineCommand ToCommandFromResource(CreateVaccineResource resource, string serialAnimalId)
     {
-        return new CreateVaccineCommand(serialAnimalId, resource.name, resource.description, resource.date_expiration);
+        return new CreateVaccineCommand(
+            serialAnimalId, 
+            resource.name, 
+            resource.description, 
+            resource.date_expiration);
     }
 }
