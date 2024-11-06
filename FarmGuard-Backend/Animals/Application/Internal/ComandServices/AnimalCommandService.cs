@@ -71,13 +71,13 @@ public class AnimalCommandService(IAnimalRepository animalRepository,
             {
                 var state = "Low";
                 var description =
-                    $"La frecuencia cardíaca de {animal.HearRate} está dentro del rango normal para la especie {animal.Specie.ToString()}.";
+                    $"La frecuencia cardíaca de {animal.Temperature} está dentro del rango normal para la especie {animal.Specie.ToString()}.";
                 await externalNotificationService.CreateNotification(tittle,description,state,inventoryId);
             }
             else
             {
                 var state = "High";
-                var description =$"La frecuencia cardíaca de {animal.HearRate} está fuera del rango normal para la especie {animal.Specie.ToString()}.";
+                var description =$"La frecuencia cardíaca de {animal.Temperature} está fuera del rango normal para la especie {animal.Specie.ToString()}.";
                 await externalNotificationService.CreateNotification(tittle,description,state,inventoryId);
                 
             }
