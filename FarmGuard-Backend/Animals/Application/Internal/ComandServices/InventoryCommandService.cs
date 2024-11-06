@@ -14,7 +14,7 @@ public class InventoryCommandService(IIventoryRepository iventoryRepository,IUni
     {
         try
         {
-            var inventory = new Inventory("name");
+            var inventory = new Inventory(command.Name,command.IdProfile);
             await iventoryRepository.AddAsync(inventory);
             await unitOfWork.CompleteAsync();
             return inventory;

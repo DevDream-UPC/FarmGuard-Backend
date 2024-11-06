@@ -5,6 +5,6 @@ namespace FarmGuard_Backend.profile.Domain.Repositories;
 
 public interface IProfileRepository:IBaseRepository<Profile>
 {
-    Task<Profile?> GetProfileByEmail(string email);
+    Task<bool> GetProfileByEmail(string email);
     
 }

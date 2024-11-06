@@ -42,5 +42,42 @@ public class AnimalController(IAnimalCommandService animalCommandService, IAnima
         var resource = AnimalResourceFromEntityAssembler.ToResourceFromEntity(animal);
         return Ok(resource);
     }
+
+    [HttpPut("{idSerialAnimal}")]
+    public async Task<IActionResult> PutAnimalById([FromBody] UpdateAnimalResource resource,string idSerialAnimal)
+    {
+        var updateAnimalCommand = new PutAnimalCommand(
+            resource.Name,
+            idSerialAnimal,
+            resource.Specie.ToString(),
+            resource.UrlIot,
+            resource.UrlPhoto,
+            resource.Location,
+            resource.HearRate,
+            resource.Temperature);
+        var animal = await animalCommandService.Handle(updateAnimalCommand);
+        
+        return Ok(animal);
+    }
+
+    [HttpDelete("{idAnimal}")]
+    public async Task<IActionResult> DeleteAnimalByAnimalSerialId(string idAnimal)
+    {
+        var animal = await animalCommandService.Handle(new DeleteAnimalByIdAnimalCommand(idAnimal));
+        return Ok(animal);
+    }
+
+    [HttpGet("inventory/{idInventory}")]
+    public async Task<IActionResult> GetAllAnimalsByInventory(int idInventory)
+    {
+        var animals = await animalQueryService.Handle(new GetAllAnimalsByIdInventory(idInventory));
+        var resource = animals.Select(AnimalResourceFromEntityAssembler.ToResourceFromEntity);
+        return Ok(resource);
+        /*
+        var vaccines = await vaccineQueryService.Handle(new GetVaccinesByIdAnimal(serialAnimalId));
+        var resources = vaccines.Select(VaccineResourceFromEntityAssembler.ToEntityFromResource);
+        return Ok(resources);*/
+    }
+
 }
 

@@ -1,5 +1,6 @@
 using FarmGuard_Backend.MedicHistory.Domain.Model.Entities;
 using FarmGuard_Backend.MedicHistory.Domain.Repositories;
+using FarmGuard_Backend.Shared.Infrastructure.Persistance.EFC.Configuration;
 using FarmGuard_Backend.Shared.Infrastructure.Persistance.EFC.Configuration.Extensions;
 using FarmGuard_Backend.Shared.Infrastructure.Persistance.EFC.Repositories;
 using Microsoft.EntityFrameworkCore;

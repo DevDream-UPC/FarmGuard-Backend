@@ -7,6 +7,6 @@ namespace FarmGuard_Backend.Notifications.Domain.Repositories
     // Interfaz para el repositorio de notificaciones
     public interface INotificationRepository:IBaseRepository<Notification>
     {
-        
+        Task<IEnumerable<Notification>> GetAllNotificationsByInventoryId(int inventoryId);
     }
 }

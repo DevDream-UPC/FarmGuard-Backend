@@ -2,6 +2,7 @@ using FarmGuard_Backend.Notifications.Domain.Model.Aggregates;
 using FarmGuard_Backend.Notifications.Domain.Repositories;
 using FarmGuard_Backend.Shared.Domain.Repositories;
 using System.Threading.Tasks;
+using FarmGuard_Backend.Animals.Domain.Model.Commands;
 using FarmGuard_Backend.Notifications.Domain.Model.Commands;
 using FarmGuard_Backend.Notifications.Domain.Services;
 
@@ -20,34 +21,15 @@ namespace FarmGuard_Backend.Notifications.Application.Internal.CommandServices
         }
 
         // Método para crear una nueva notificación
-        
-        /* Tu codigo
-            public async Task<Notification> CreateNotificationAsync(string title, int animalId, string description,string state)
-            {
-                //ObjetoDato
-                var notification = new Notification();
-                ;
 
-                await _notificationRepository.AddAsync(notification);
-                await _unitOfWork.CompleteAsync();
-
-                return notification;
-            }
-        */
         public async Task<Notification?> Handle(CreateNotificationCommand command)
         {
             try
             {
-                //Reglas del Negocio =>
-                //Verifiques si existe un animal con esa id,Y obtener los datos del animal
-                //Verifiques si su temperatura no excede de lo normal
-                //Vwerifiques que su ritmo cardiaco no este fuera de lo normal
-                
-                
-                
+            
                 //CreaObjeto
                 var notification =
-                    new Notification(command.title, command.animalId, command.description, command.state);
+                    new Notification(command.title, command.description, command.state,command.InventoryId);
                 
                 //Se guarda en la base de datos
                 await _notificationRepository.AddAsync(notification);
@@ -63,5 +45,6 @@ namespace FarmGuard_Backend.Notifications.Application.Internal.CommandServices
             }
             
         }
+        
     }
 }

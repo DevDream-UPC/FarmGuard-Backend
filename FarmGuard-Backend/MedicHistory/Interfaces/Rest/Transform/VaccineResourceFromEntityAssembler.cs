@@ -7,6 +7,6 @@ public class VaccineResourceFromEntityAssembler
 {
     public static VaccineResource ToEntityFromResource(Vaccine vaccine)
     {
-        return new VaccineResource(vaccine.Name, vaccine.Description,vaccine.Date);
+        return new VaccineResource(vaccine.Id,vaccine.Name, vaccine.Description,vaccine.Date);
     }
 }

@@ -1,4 +1,5 @@
 using FarmGuard_Backend.Shared.Domain.Repositories;
+using FarmGuard_Backend.Shared.Infrastructure.Persistance.EFC.Configuration;
 using FarmGuard_Backend.Shared.Infrastructure.Persistance.EFC.Configuration.Extensions;
 using Microsoft.EntityFrameworkCore.Storage;
 
