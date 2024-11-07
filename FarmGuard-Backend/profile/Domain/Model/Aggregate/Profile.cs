@@ -1,9 +1,17 @@
 using FarmGuard_Backend.Animals.Domain.Model.Aggregates;
+using FarmGuard_Backend.IAM.Domain.Model.Aggregates;
 using FarmGuard_Backend.profile.Domain.Model.ValueObjects;
 
 namespace FarmGuard_Backend.profile.Domain.Model.Aggregate;
 
-public class Profile
+/// <summary>
+/// Profile Aggregate Root 
+/// </summary>
+/// <remarks>
+/// This class represents the Profile aggregate root.
+/// It contains the properties and methods to manage the profile information.
+/// </remarks>
+public partial class Profile
 {
     public Profile()
     {
@@ -12,11 +20,12 @@ public class Profile
         Email = new EmailAddress();
     }
 
-    public Profile(string firstName, string lastName, string email, string urlPhoto)
+    public Profile(string firstName, string lastName, string email, string urlPhoto,int userId)
     {
         Name = new PersonName(firstName, lastName);
         Email = new EmailAddress(email);
         UrlPhoto = urlPhoto;
+        UserId = userId;
         
     }
     
@@ -31,8 +40,10 @@ public class Profile
     public string FullName => Name.FullName;
     
     public Inventory Inventory {get; private set;}
-    
     public int InventoryId { get; private set; }
+    
+    public int UserId { get; private set; }
+    public User User { get; private set; }
 
     public void AssignInventory(int idInventory)
     {

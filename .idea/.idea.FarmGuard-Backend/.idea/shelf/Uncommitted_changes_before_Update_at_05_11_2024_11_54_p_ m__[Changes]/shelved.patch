@@ -1,0 +1,235 @@
+Index: FarmGuard-Backend/Animals/Application/Internal/ComandServices/AnimalCommandService.cs
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>using FarmGuard_Backend.Animals.Domain.Model.Aggregates;\r\nusing FarmGuard_Backend.Animals.Domain.Model.Commands;\r\nusing FarmGuard_Backend.Animals.Domain.Repositories;\r\nusing FarmGuard_Backend.Animals.Domain.Services;\r\nusing FarmGuard_Backend.Shared.Domain.Repositories;\r\n\r\nnamespace FarmGuard_Backend.Animals.Application.Internal.ComandServices;\r\n\r\npublic class AnimalCommandService(IAnimalRepository animalRepository,IUnitOfWork unitOfWork,IIventoryRepository inIventoryRepository):IAnimalCommandService\r\n{\r\n    public async Task<Animal?> Handle(CreateAnimalCommand command)\r\n    {\r\n        try\r\n        {\r\n            /*Aca iria las reglas del negocio*/\r\n            var inventory = await inIventoryRepository.FindByIdAsync(command.inventoryId);\r\n            if (inventory is null) throw new Exception(\"Inventory not found\");\r\n            \r\n            /*Aqui se crea la la entidad animal*/\r\n            var animal = new Animal(\r\n                command.name, \r\n                command.specie, \r\n                command.urlIot, \r\n                command.urlPhoto, \r\n                command.location,\r\n                command.hearRate, \r\n                command.temperature,inventory.Id);\r\n            \r\n            \r\n            /*Aca se guarda en db por transaccion*/\r\n            await animalRepository.AddAsync(animal);\r\n            await unitOfWork.CompleteAsync();\r\n            return animal;\r\n\r\n        }\r\n        catch (Exception e)\r\n        {\r\n            Console.WriteLine(e);\r\n            throw;\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/FarmGuard-Backend/Animals/Application/Internal/ComandServices/AnimalCommandService.cs b/FarmGuard-Backend/Animals/Application/Internal/ComandServices/AnimalCommandService.cs
+--- a/FarmGuard-Backend/Animals/Application/Internal/ComandServices/AnimalCommandService.cs	(revision 9ceb2c25231b7a30c6c1bc96c6ae26ded89af204)
++++ b/FarmGuard-Backend/Animals/Application/Internal/ComandServices/AnimalCommandService.cs	(date 1730868796696)
+@@ -1,12 +1,17 @@
++using FarmGuard_Backend.Animals.Application.Internal.OutboundServices;
+ using FarmGuard_Backend.Animals.Domain.Model.Aggregates;
+ using FarmGuard_Backend.Animals.Domain.Model.Commands;
++using FarmGuard_Backend.Animals.Domain.Model.Queries;
+ using FarmGuard_Backend.Animals.Domain.Repositories;
+ using FarmGuard_Backend.Animals.Domain.Services;
+ using FarmGuard_Backend.Shared.Domain.Repositories;
+ 
+ namespace FarmGuard_Backend.Animals.Application.Internal.ComandServices;
+ 
+-public class AnimalCommandService(IAnimalRepository animalRepository,IUnitOfWork unitOfWork,IIventoryRepository inIventoryRepository):IAnimalCommandService
++public class AnimalCommandService(IAnimalRepository animalRepository,
++    IUnitOfWork unitOfWork,
++    ExternalNotificationService externalNotificationService,
++    IIventoryRepository inIventoryRepository):IAnimalCommandService
+ {
+     public async Task<Animal?> Handle(CreateAnimalCommand command)
+     {
+@@ -39,4 +44,84 @@
+             throw;
+         }
+     }
++
++    public async Task<Animal?> Handle(PutAnimalCommand command)
++    {
++        try
++        {
++            var animal = await animalRepository.FindAnimalBySerialNumberIdAsync(command.AnimalId);
++            if (animal is null) throw new Exception("No se encontro animal con Cierta Id Animal");
++            
++            /*aActualizamos los datos*/
++            
++            animal.UpdateInformationAnimal(command.Name,command.Specie,command.UrlIot,command.UrlPhoto);
++            animal.UpdateInformationIot(command.Location,command.HearRate,command.Temperature);
++            
++            /*Verificamos si la temperatura esta en su rango y vemos si creamos notificaciones*/
++
++            var controlTemperature = animal.GetDescriptionNotificationByTemperature();
++            var controlHearRate = animal.GetDescriptionNotificationByHearRate();
++            
++            //Creamos variables para pasar
++
++            var tittle = $"Notification of {animal.Name}";
++            var inventoryId = animal.InventoryId;
++
++            if (controlTemperature)
++            {
++                var state = "Low";
++                var description =
++                    $"La frecuencia cardíaca de {animal.Temperature} está dentro del rango normal para la especie {animal.Specie.ToString()}.";
++                await externalNotificationService.CreateNotification(tittle,description,state,inventoryId);
++            }
++            else
++            {
++                var state = "High";
++                var description =$"La frecuencia cardíaca de {animal.Temperature} está fuera del rango normal para la especie {animal.Specie.ToString()}.";
++                await externalNotificationService.CreateNotification(tittle,description,state,inventoryId);
++                
++            }
++
++            if (controlHearRate)
++            {
++                var state = "Low";
++                var description = $"La Temperatura de {animal.HearRate} está dentro del rango normal para la especie {animal.Specie.ToString()}.";
++                await externalNotificationService.CreateNotification(tittle,description,state,inventoryId);
++            }
++            else
++            {
++                var state = "High";
++                var description =$"La Temperatura de {animal.HearRate} está fuera del rango normal para la especie {animal.Specie.ToString()}.";
++                await externalNotificationService.CreateNotification(tittle,description,state,inventoryId);
++            }
++            
++            
++            
++                
++            
++            /*Verificamos si el ritmo cardiaco esta en su rango*/
++            
++            animalRepository.Update(animal);
++            await unitOfWork.CompleteAsync();
++            
++            return animal;
++
++        }
++        catch (Exception e)
++        {
++            Console.WriteLine(e);
++            throw;
++        }
++    }
++
++    public async Task<Animal?> Handle(DeleteAnimalByIdAnimalCommand command)
++    {
++        var animal = await animalRepository.FindAnimalBySerialNumberIdAsync(command.AnimalId);
++        if (animal is null) throw new Exception("No se encontro animal con Cierta Id Animal");
++        
++        animalRepository.Remove(animal);
++        await unitOfWork.CompleteAsync();
++
++        return animal;
++    }
+ }
+\ No newline at end of file
+Index: .idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_10_2024_23_37__Changes_1.xml
+===================================================================
+diff --git a/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_10_2024_23_37__Changes_1.xml b/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_10_2024_23_37__Changes_1.xml
+deleted file mode 100644
+--- a/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_10_2024_23_37__Changes_1.xml	(revision 9ceb2c25231b7a30c6c1bc96c6ae26ded89af204)
++++ /dev/null	(revision 9ceb2c25231b7a30c6c1bc96c6ae26ded89af204)
+@@ -1,54 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Checkout_at_29_10_2024_23_37_[Changes]1" date="1730263088060" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_10_2024_23_37_[Changes]1/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 29/10/2024 23:37 [Changes]" />
+-  <binary>
+-    <option name="BEFORE_PATH" value="FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.dll" />
+-    <option name="AFTER_PATH" value="FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.dll" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_10_2024_23_37_[Changes]1/FarmGuard-Backend.dll" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.genruntimeconfig.cache" />
+-    <option name="AFTER_PATH" value="FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.genruntimeconfig.cache" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_10_2024_23_37_[Changes]1/FarmGuard-Backend.genruntimeconfig.cache" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.pdb" />
+-    <option name="AFTER_PATH" value="FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.pdb" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_10_2024_23_37_[Changes]1/FarmGuard-Backend.pdb" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.exe" />
+-    <option name="AFTER_PATH" value="FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.exe" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_10_2024_23_37_[Changes]1/FarmGuard-Backend.exe" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.assets.cache" />
+-    <option name="AFTER_PATH" value="FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.assets.cache" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_10_2024_23_37_[Changes]1/FarmGuard-Backend.assets.cache" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.csproj.AssemblyReference.cache" />
+-    <option name="AFTER_PATH" value="FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.csproj.AssemblyReference.cache" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_10_2024_23_37_[Changes]1/FarmGuard-Backend.csproj.AssemblyReference.cache" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="FarmGuard-Backend/obj/project.nuget.cache" />
+-    <option name="AFTER_PATH" value="FarmGuard-Backend/obj/project.nuget.cache" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_10_2024_23_37_[Changes]1/project.nuget.cache" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.csproj.CoreCompileInputs.cache" />
+-    <option name="AFTER_PATH" value="FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.csproj.CoreCompileInputs.cache" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_10_2024_23_37_[Changes]1/FarmGuard-Backend.csproj.CoreCompileInputs.cache" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="FarmGuard-Backend/obj/Debug/net8.0/apphost.exe" />
+-    <option name="AFTER_PATH" value="FarmGuard-Backend/obj/Debug/net8.0/apphost.exe" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_10_2024_23_37_[Changes]1/apphost.exe" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.AssemblyInfoInputs.cache" />
+-    <option name="AFTER_PATH" value="FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.AssemblyInfoInputs.cache" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_10_2024_23_37_[Changes]1/FarmGuard-Backend.AssemblyInfoInputs.cache" />
+-  </binary>
+-</changelist>
+\ No newline at end of file
+Index: .idea/.idea.FarmGuard-Backend/.idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoGeneratedRunConfigurationManager\">\r\n    <projectFile profileName=\"IIS Express\">FarmGuard-Backend/FarmGuard-Backend.csproj</projectFile>\r\n    <projectFile profileName=\"http\">FarmGuard-Backend/FarmGuard-Backend.csproj</projectFile>\r\n    <projectFile profileName=\"https\">FarmGuard-Backend/FarmGuard-Backend.csproj</projectFile>\r\n  </component>\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"5bbbec5a-8698-4918-8ffc-318a3ad27a22\" name=\"Changes\" comment=\"feat[main]: fixed location dockerfile\">\r\n      <change beforePath=\"$PROJECT_DIR$/FarmGuard-Backend/.dockerignore\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.dockerignore\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/FarmGuard-Backend/Dockerfile\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/FarmGuard-Backend/Dockerfile\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"DpaMonitoringSettings\">\r\n    <option name=\"autoShow\" value=\"false\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"feat/add-notifications\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;Brays83&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/DevDream-UPC/FarmGuard-Backend.git&quot;,\r\n    &quot;accountId&quot;: &quot;556f7048-6f44-4d86-8255-ceeb8c2597b2&quot;\r\n  },\r\n  &quot;recentNewPullRequestHead&quot;: {\r\n    &quot;server&quot;: {\r\n      &quot;useHttp&quot;: false,\r\n      &quot;host&quot;: &quot;github.com&quot;,\r\n      &quot;port&quot;: null,\r\n      &quot;suffix&quot;: null\r\n    },\r\n    &quot;owner&quot;: &quot;DevDream-UPC&quot;,\r\n    &quot;repository&quot;: &quot;FarmGuard-Backend&quot;\r\n  }\r\n}</component>\r\n  <component name=\"HighlightingSettingsPerFile\">\r\n    <setting file=\"mock://D:/Proyectos/06-C#/FarmGuard-Backend/FarmGuard-Backend/Animals/Domain/Model/Aggregates/Animal.cs\" root0=\"SKIP_HIGHLIGHTING\" />\r\n    <setting file=\"mock://D:/Proyectos/06-C#/FarmGuard-Backend/FarmGuard-Backend/Animals/Interfaces/Acl/Services/AnimalContextFacade.cs\" root0=\"SKIP_HIGHLIGHTING\" />\r\n    <setting file=\"mock://D:/Proyectos/06-C#/FarmGuard-Backend/FarmGuard-Backend/Shared/Infrastructure/Persistance/EFC/Configuration/AppDbContext.cs\" root0=\"SKIP_HIGHLIGHTING\" />\r\n    <setting file=\"mock://D:/Proyectos/06-C#/FarmGuard-Backend/FarmGuard-Backend/Shared/Infrastructure/Persistance/EFC/Configuration/AppDbContext.cs\" root0=\"SKIP_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs\" root0=\"SKIP_HIGHLIGHTING\" />\r\n    <setting file=\"mock://D:/Proyectos/06-C#/FarmGuard-Backend/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.AssemblyInfo.cs\" root0=\"SKIP_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/FarmGuard-Backend/obj/Release/net8.0/.NETCoreApp,Version=v8.0.AssemblyAttributes.cs\" root0=\"SKIP_HIGHLIGHTING\" />\r\n    <setting file=\"mock://diff.cs\" root0=\"SKIP_HIGHLIGHTING\" />\r\n    <setting file=\"mock://diff.cs\" root0=\"SKIP_HIGHLIGHTING\" />\r\n  </component>\r\n  <component name=\"KubernetesApiPersistence\"><![CDATA[{}]]></component>\r\n  <component name=\"KubernetesApiProvider\"><![CDATA[{\r\n  \"isMigrated\": true\r\n}]]></component>\r\n  <component name=\"MetaFilesCheckinStateConfiguration\" checkMetaFiles=\"true\" />\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 3\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2nX9Z7A9r7e2MumPBedTvtiRWmW\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \".NET Launch Settings Profile.FarmGuard-Backend: http.executor\": \"Run\",\r\n    \".NET Launch Settings Profile.FarmGuard-Backend: https.executor\": \"Run\",\r\n    \"Docker.FarmGuard-Backend/Dockerfile.executor\": \"Run\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"git-widget-placeholder\": \"#5 on develop\",\r\n    \"ignore.virus.scanning.warn.message\": \"true\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"settings.editor.selected.configurable\": \"preferences.pluginManager\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RunManager\" selected=\"Docker.FarmGuard-Backend/Dockerfile\">\r\n    <configuration name=\"FarmGuard-Backend: IIS Express\" type=\"LaunchSettings\" factoryName=\".NET Launch Settings Profile\">\r\n      <option name=\"LAUNCH_PROFILE_PROJECT_FILE_PATH\" value=\"$PROJECT_DIR$/FarmGuard-Backend/FarmGuard-Backend.csproj\" />\r\n      <option name=\"LAUNCH_PROFILE_TFM\" value=\"net8.0\" />\r\n      <option name=\"LAUNCH_PROFILE_NAME\" value=\"IIS Express\" />\r\n      <option name=\"USE_EXTERNAL_CONSOLE\" value=\"0\" />\r\n      <option name=\"USE_MONO\" value=\"0\" />\r\n      <option name=\"RUNTIME_ARGUMENTS\" value=\"\" />\r\n      <option name=\"GENERATE_APPLICATIONHOST_CONFIG\" value=\"1\" />\r\n      <option name=\"SHOW_IIS_EXPRESS_OUTPUT\" value=\"0\" />\r\n      <option name=\"SEND_DEBUG_REQUEST\" value=\"1\" />\r\n      <option name=\"ADDITIONAL_IIS_EXPRESS_ARGUMENTS\" value=\"\" />\r\n      <method v=\"2\">\r\n        <option name=\"Build\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"FarmGuard-Backend: http\" type=\"LaunchSettings\" factoryName=\".NET Launch Settings Profile\">\r\n      <option name=\"LAUNCH_PROFILE_PROJECT_FILE_PATH\" value=\"$PROJECT_DIR$/FarmGuard-Backend/FarmGuard-Backend.csproj\" />\r\n      <option name=\"LAUNCH_PROFILE_TFM\" value=\"net8.0\" />\r\n      <option name=\"LAUNCH_PROFILE_NAME\" value=\"http\" />\r\n      <option name=\"USE_EXTERNAL_CONSOLE\" value=\"0\" />\r\n      <option name=\"USE_MONO\" value=\"0\" />\r\n      <option name=\"RUNTIME_ARGUMENTS\" value=\"\" />\r\n      <option name=\"GENERATE_APPLICATIONHOST_CONFIG\" value=\"1\" />\r\n      <option name=\"SHOW_IIS_EXPRESS_OUTPUT\" value=\"0\" />\r\n      <option name=\"SEND_DEBUG_REQUEST\" value=\"1\" />\r\n      <option name=\"ADDITIONAL_IIS_EXPRESS_ARGUMENTS\" value=\"\" />\r\n      <method v=\"2\">\r\n        <option name=\"Build\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"FarmGuard-Backend: https\" type=\"LaunchSettings\" factoryName=\".NET Launch Settings Profile\">\r\n      <option name=\"LAUNCH_PROFILE_PROJECT_FILE_PATH\" value=\"$PROJECT_DIR$/FarmGuard-Backend/FarmGuard-Backend.csproj\" />\r\n      <option name=\"LAUNCH_PROFILE_TFM\" value=\"net8.0\" />\r\n      <option name=\"LAUNCH_PROFILE_NAME\" value=\"https\" />\r\n      <option name=\"USE_EXTERNAL_CONSOLE\" value=\"0\" />\r\n      <option name=\"USE_MONO\" value=\"0\" />\r\n      <option name=\"RUNTIME_ARGUMENTS\" value=\"\" />\r\n      <option name=\"GENERATE_APPLICATIONHOST_CONFIG\" value=\"1\" />\r\n      <option name=\"SHOW_IIS_EXPRESS_OUTPUT\" value=\"0\" />\r\n      <option name=\"SEND_DEBUG_REQUEST\" value=\"1\" />\r\n      <option name=\"ADDITIONAL_IIS_EXPRESS_ARGUMENTS\" value=\"\" />\r\n      <method v=\"2\">\r\n        <option name=\"Build\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"FarmGuard-Backend/Dockerfile\" type=\"docker-deploy\" factoryName=\"dockerfile\" server-name=\"Docker\">\r\n      <deployment type=\"dockerfile\">\r\n        <settings>\r\n          <option name=\"imageTag\" value=\"farmguard-backend\" />\r\n          <option name=\"containerName\" value=\"farmguard-backend\" />\r\n          <option name=\"contextFolderPath\" value=\"D:\\Proyectos\\06-C#\\FarmGuard-Backend\" />\r\n          <option name=\"portBindings\">\r\n            <list>\r\n              <DockerPortBindingImpl>\r\n                <option name=\"containerPort\" value=\"8080\" />\r\n                <option name=\"hostIp\" value=\"127.0.0.1\" />\r\n                <option name=\"hostPort\" value=\"8080\" />\r\n              </DockerPortBindingImpl>\r\n            </list>\r\n          </option>\r\n          <option name=\"sourceFilePath\" value=\"FarmGuard-Backend/Dockerfile\" />\r\n        </settings>\r\n      </deployment>\r\n      <EXTENSION ID=\"com.jetbrains.rider.docker.debug\" isFastModeEnabled=\"true\" isSslEnabled=\"false\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"docker-deploy\" factoryName=\"dockerfile\" temporary=\"true\">\r\n      <deployment type=\"dockerfile\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"5bbbec5a-8698-4918-8ffc-318a3ad27a22\" name=\"Changes\" comment=\"\" />\r\n      <created>1729108607465</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1729108607465</updated>\r\n      <workItem from=\"1729108608765\" duration=\"37000\" />\r\n      <workItem from=\"1729108778388\" duration=\"5401000\" />\r\n      <workItem from=\"1729136055224\" duration=\"5406000\" />\r\n      <workItem from=\"1730259774783\" duration=\"2816000\" />\r\n      <workItem from=\"1730265329890\" duration=\"1913000\" />\r\n      <workItem from=\"1730291474654\" duration=\"6054000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"chore[main]:commit initial\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1729144898831</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1729144898831</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"feat[develop]: added Dockerfile\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1730361815834</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1730361815834</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"feat[main]: fixed location of dockerfile\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1730362919942</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1730362919942</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"feat[main]: fixed location dockerfile\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1730363159587</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1730363159587</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"5\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"UnityCheckinConfiguration\" checkUnsavedScenes=\"true\" />\r\n  <component name=\"UnityProjectConfiguration\" hasMinimizedUI=\"false\" />\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"CLEAR_INITIAL_COMMIT_MESSAGE\" value=\"true\" />\r\n    <MESSAGE value=\"chore[main]:commit initial\" />\r\n    <MESSAGE value=\"feat[develop]: added Dockerfile\" />\r\n    <MESSAGE value=\"feat[main]: fixed location of dockerfile\" />\r\n    <MESSAGE value=\"feat[main]: fixed location dockerfile\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"feat[main]: fixed location dockerfile\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.idea.FarmGuard-Backend/.idea/workspace.xml b/.idea/.idea.FarmGuard-Backend/.idea/workspace.xml
+--- a/.idea/.idea.FarmGuard-Backend/.idea/workspace.xml	(revision 9ceb2c25231b7a30c6c1bc96c6ae26ded89af204)
++++ b/.idea/.idea.FarmGuard-Backend/.idea/workspace.xml	(date 1730868836940)
+@@ -10,8 +10,9 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="5bbbec5a-8698-4918-8ffc-318a3ad27a22" name="Changes" comment="feat[main]: fixed location dockerfile">
+-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/Dockerfile" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Application/Internal/ComandServices/AnimalCommandService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Application/Internal/ComandServices/AnimalCommandService.cs" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.dll" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.exe" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/bin/Debug/net8.0/FarmGuard-Backend.exe" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -62,10 +63,10 @@
+     <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
+     <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
+   </component>
+-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
+-  <component name="KubernetesApiProvider"><![CDATA[{
+-  "isMigrated": true
+-}]]></component>
++  <component name="KubernetesApiPersistence">{}</component>
++  <component name="KubernetesApiProvider">{
++  &quot;isMigrated&quot;: true
++}</component>
+   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+   <component name="ProjectColorInfo">{
+   &quot;associatedIndex&quot;: 3
+@@ -81,7 +82,7 @@
+     ".NET Launch Settings Profile.FarmGuard-Backend: https.executor": "Run",
+     "Docker.FarmGuard-Backend/Dockerfile.executor": "Run",
+     "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "git-widget-placeholder": "#5 on develop",
++    "git-widget-placeholder": "develop",
+     "ignore.virus.scanning.warn.message": "true",
+     "node.js.detected.package.eslint": "true",
+     "node.js.detected.package.tslint": "true",
+@@ -160,7 +161,10 @@
+       <method v="2" />
+     </configuration>
+     <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+-      <deployment type="dockerfile" />
++      <deployment type="dockerfile">
++        <settings />
++      </deployment>
++      <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
+       <method v="2" />
+     </configuration>
+   </component>

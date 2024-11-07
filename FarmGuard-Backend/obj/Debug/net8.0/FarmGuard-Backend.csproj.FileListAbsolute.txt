@@ -224,3 +224,18 @@ C:\Users\aless\RiderProjects\SW51-Apps Web\FarmGuard-Backend\FarmGuard-Backend\o
 C:\Users\aless\RiderProjects\SW51-Apps Web\FarmGuard-Backend\FarmGuard-Backend\obj\Debug\net8.0\FarmGuard-Backend.pdb
 C:\Users\aless\RiderProjects\SW51-Apps Web\FarmGuard-Backend\FarmGuard-Backend\obj\Debug\net8.0\FarmGuard-Backend.genruntimeconfig.cache
 C:\Users\aless\RiderProjects\SW51-Apps Web\FarmGuard-Backend\FarmGuard-Backend\obj\Debug\net8.0\ref\FarmGuard-Backend.dll
+D:\Proyectos\06-C#\FarmGuard-Backend\FarmGuard-Backend\bin\Debug\net8.0\BCrypt.Net-Next.dll
+D:\Proyectos\06-C#\FarmGuard-Backend\FarmGuard-Backend\bin\Debug\net8.0\Kephas.Abstractions.dll
+D:\Proyectos\06-C#\FarmGuard-Backend\FarmGuard-Backend\bin\Debug\net8.0\Kephas.Extensions.DependencyInjection.dll
+D:\Proyectos\06-C#\FarmGuard-Backend\FarmGuard-Backend\bin\Debug\net8.0\Kephas.Injection.dll
+D:\Proyectos\06-C#\FarmGuard-Backend\FarmGuard-Backend\bin\Debug\net8.0\Kephas.Logging.dll
+D:\Proyectos\06-C#\FarmGuard-Backend\FarmGuard-Backend\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Proyectos\06-C#\FarmGuard-Backend\FarmGuard-Backend\bin\Debug\net8.0\Microsoft.Bcl.TimeProvider.dll
+D:\Proyectos\06-C#\FarmGuard-Backend\FarmGuard-Backend\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Proyectos\06-C#\FarmGuard-Backend\FarmGuard-Backend\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Proyectos\06-C#\FarmGuard-Backend\FarmGuard-Backend\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+D:\Proyectos\06-C#\FarmGuard-Backend\FarmGuard-Backend\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+D:\Proyectos\06-C#\FarmGuard-Backend\FarmGuard-Backend\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Proyectos\06-C#\FarmGuard-Backend\FarmGuard-Backend\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+D:\Proyectos\06-C#\FarmGuard-Backend\FarmGuard-Backend\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Proyectos\06-C#\FarmGuard-Backend\FarmGuard-Backend\bin\Debug\net8.0\de-DE\Kephas.Abstractions.resources.dll

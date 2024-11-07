@@ -1,5 +1,6 @@
 using EntityFrameworkCore.CreatedUpdatedDate.Extensions;
 using FarmGuard_Backend.Animals.Domain.Model.Aggregates;
+using FarmGuard_Backend.IAM.Domain.Model.Aggregates;
 using FarmGuard_Backend.MedicHistory.Domain.Model.Entities;
 using FarmGuard_Backend.Notifications.Domain.Model.Aggregates;
 using FarmGuard_Backend.profile.Domain.Model.Aggregate;
@@ -103,6 +104,16 @@ public class AppDbContext(DbContextOptions options):DbContext(options)
             .WithOne(n => n.Inventory)
             .HasForeignKey(n => n.InventoryId)
             .HasPrincipalKey(i => i.Id);
+
+        builder.Entity<User>()
+            .HasOne(u => u.Profile)
+            .WithOne(p => p.User)
+            .HasForeignKey<User>(u => u.IdProfile);
+
+        builder.Entity<Profile>()
+            .HasOne(p => p.User)
+            .WithOne(u => u.Profile)
+            .HasForeignKey<Profile>(p => p.UserId);
             
             
 
@@ -113,12 +124,15 @@ public class AppDbContext(DbContextOptions options):DbContext(options)
         builder.Entity<Notification>().Property(n => n.Title).IsRequired();
         builder.Entity<Notification>().Property(n => n.Description).IsRequired();
         builder.Entity<Notification>().Property(n => n.State).IsRequired();
-            /*
-        builder.Entity<Animal>().OwnsOne(t => t.SerialNumber, n =>
-        {
-            n.WithOwner().HasForeignKey("id");
-            n.Property(a => a.Number).HasColumnName("id_animal");
-        });*/
+        
+        // IAM Context
+        
+        builder.Entity<User>().HasKey(u => u.Id);
+        builder.Entity<User>().Property(u => u.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<User>().Property(u => u.Username).IsRequired();
+        builder.Entity<User>().Property(u => u.PasswordHash).IsRequired();
+        builder.Entity<User>().Property(u => u.IdProfile).IsRequired();
+        
         //=======================================================
         builder.UseSnakeCaseWithPluralizedTableNamingConvention();
     }

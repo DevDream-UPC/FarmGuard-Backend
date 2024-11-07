@@ -8,6 +8,18 @@ using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace FarmGuard_Backend.profile.Application.Internal.ComandServices;
 
+/// <summary>
+/// Profile command service 
+/// </summary>
+/// <param name="profileRepository">
+/// Profile repository
+/// </param>
+/// <param name="unitOfWork">
+/// Unit of work
+/// </param>
+/// <param name="externalInventoryService">
+/// ExternalInventoryService
+/// </param>
 public class ProfileCommandService(IProfileRepository profileRepository,IUnitOfWork unitOfWork,ExternalInventoryService externalInventoryService):IProfileCommandService
 {
     
@@ -21,7 +33,7 @@ public class ProfileCommandService(IProfileRepository profileRepository,IUnitOfW
             
             if( existbyEmail) throw new Exception("Existe el email con el correo");
             
-            var profile = new Profile(command.FirstName,command.LastName,command.Email,command.UrlPhoto);
+            var profile = new Profile(command.FirstName,command.LastName,command.Email,command.UrlPhoto,command.UserId);
             
             await profileRepository.AddAsync(profile);
             await unitOfWork.CompleteAsync();

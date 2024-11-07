@@ -5,7 +5,6 @@ public record CreateAnimalResource(
     string specie,
     string urlIot,
     string urlPhoto,
-    string idInventory,
     string location,
     long hearRate,
     long temperature

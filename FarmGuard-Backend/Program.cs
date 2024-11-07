@@ -6,6 +6,18 @@ using FarmGuard_Backend.Animals.Domain.Services;
 using FarmGuard_Backend.Animals.Infrastructure.Persistence.EFC.Repositories;
 using FarmGuard_Backend.Animals.Interfaces.Acl;
 using FarmGuard_Backend.Animals.Interfaces.Acl.Services;
+using FarmGuard_Backend.IAM.Application.Internal.CommandServices;
+using FarmGuard_Backend.IAM.Application.Internal.OutboundServices;
+using FarmGuard_Backend.IAM.Application.Internal.QueryServices;
+using FarmGuard_Backend.IAM.Domain.Repositories;
+using FarmGuard_Backend.IAM.Domain.Services;
+using FarmGuard_Backend.IAM.Infrastructure.Hashing.BCrypt.Services;
+using FarmGuard_Backend.IAM.Infrastructure.Persistence.EFC.Repositories;
+using FarmGuard_Backend.IAM.Infrastructure.Pipeline.Middleware.Extensions;
+using FarmGuard_Backend.IAM.Infrastructure.Tokens.JWT.Configuration;
+using FarmGuard_Backend.IAM.Infrastructure.Tokens.JWT.Services;
+using FarmGuard_Backend.IAM.Interfaces.ACL;
+using FarmGuard_Backend.IAM.Interfaces.ACL.Services;
 using FarmGuard_Backend.MedicHistory.Application.Internal.ComandServices;
 using FarmGuard_Backend.MedicHistory.Application.Internal.OutboundServices;
 using FarmGuard_Backend.MedicHistory.Application.Internal.QueryServices;
@@ -25,6 +37,8 @@ using FarmGuard_Backend.profile.Application.Internal.QueryServices;
 using FarmGuard_Backend.profile.Domain.Repositories;
 using FarmGuard_Backend.profile.Domain.Services;
 using FarmGuard_Backend.profile.Infrastructure.Persistence.EFC.Repositories;
+using FarmGuard_Backend.profile.Interfaces.Acl;
+using FarmGuard_Backend.profile.Interfaces.Acl.Services;
 using FarmGuard_Backend.Shared.Domain.Repositories;
 using FarmGuard_Backend.Shared.Infrastructure.Persistance.EFC.Configuration;
 using FarmGuard_Backend.Shared.Infrastructure.Persistance.EFC.Configuration.Extensions;
@@ -81,6 +95,29 @@ builder.Services.AddSwaggerGen(
                     Url = new Uri("https://www.apache.org/licenses/LICENSE-2.0.html")
                 }
             });
+        c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+        {
+            In = ParameterLocation.Header,
+            Description = "Please enter token",
+            Name = "Authorization",
+            Type = SecuritySchemeType.Http,
+            BearerFormat = "JWT",
+            Scheme = "bearer"
+        });
+        c.AddSecurityRequirement(new OpenApiSecurityRequirement
+        {
+            {
+                new OpenApiSecurityScheme
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Id = "Bearer",
+                        Type = ReferenceType.SecurityScheme
+                    }
+                },
+                Array.Empty<string>()
+            }
+        });
     });
 
 /*Configure Lowercase URLs*/
@@ -124,6 +161,22 @@ builder.Services.AddScoped<ExternalInventoryService>();
 builder.Services.AddScoped<INotificationContextFacade, NotificationContextFacade>();
 builder.Services.AddScoped<ExternalNotificationService>();
 
+builder.Services.AddScoped<IProfileContextFacade, ProfileContextFacade>();
+builder.Services.AddScoped<ExternalProfileService>();
+
+// IAM Bounded Context Injection Configuration
+
+// TokenSettings Configuration
+
+builder.Services.Configure<TokenSettings>(builder.Configuration.GetSection("TokenSettings"));
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserCommandService, UserCommandService>();
+builder.Services.AddScoped<IUserQueryService, UserQueryService>();
+builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IHashingService, HashingService>();
+builder.Services.AddScoped<IIamContextFacade, IamContextFacade>();
+
 /* Add CORS Policy*/
 builder.Services.AddCors(options =>
 {
@@ -136,12 +189,14 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-/* Verify Database Objects are created*/
+/* Verify Database Objects are created y migracion de */
 using (var scope = app.Services.CreateScope())
 {
+    
     var services = scope.ServiceProvider;
     var context = services.GetRequiredService<AppDbContext>();
     context.Database.EnsureCreated();
+    
 }
 
 
@@ -152,6 +207,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("AllowAllPolicy");
+
+// Add Authorization Middleware to Pipeline
+app.UseRequestAuthorization();
 
 app.UseHttpsRedirection();
 

@@ -12,6 +12,7 @@ public class ProfileResourceFromEntityAssembler
             entity.Name.LastName,
             entity.Email.EAddress,
             entity.UrlPhoto,
-            entity.InventoryId);
+            entity.InventoryId,
+            entity.UserId);
     }
 }

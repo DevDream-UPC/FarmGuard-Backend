@@ -11,6 +11,7 @@ public class CreateProfileCommandFromResourceAssembler
             resource.FirstName, 
             resource.LastName, 
             resource.Email, 
-            resource.UrlPhoto);
+            resource.UrlPhoto,
+            resource.UserId);
     }
 }
