@@ -1,3 +1,4 @@
+using System.Net;
 using FarmGuard_Backend.Animals.Application.Internal.ComandServices;
 using FarmGuard_Backend.Animals.Application.Internal.OutboundServices;
 using FarmGuard_Backend.Animals.Application.Internal.QueryServices;
@@ -49,31 +50,46 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.Listen(IPAddress.Any, 8080);  // Asegúrate de que escucha en el puerto 8080
+});
+
 /*Configuracion LowerCaseUrl*/
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddControllers( options => options.Conventions.Add(new KebabCaseRouteNamingConvention()));
 
 /*Añadir Conexion DB*/
-/*
-*/
-var connectionSrting = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING") ?? builder.Configuration.GetConnectionString("DefaultConnection");
+
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 /*Configurar Contexto de la DB and niveles de loggin*/
 
 builder.Services.AddDbContext<AppDbContext>(
     options =>
     {
-        if (connectionSrting != null)
+        if (connectionString != null)
             if (builder.Environment.IsDevelopment())
-                options.UseMySQL(connectionSrting)
+            {
+                System.Console.WriteLine($"ConnectionString: {connectionString}");
+                options.UseMySQL(connectionString)
                     .LogTo(Console.WriteLine, LogLevel.Information)
                     .EnableSensitiveDataLogging()
                     .EnableDetailedErrors();
+
+            }
+
             else if (builder.Environment.IsProduction())
-                options.UseMySQL(connectionSrting)
+            {
+                System.Console.WriteLine($"ConnectionString: {connectionString}");
+                options.UseMySQL(connectionString)
                     .LogTo(Console.WriteLine, LogLevel.Error)
                     .EnableDetailedErrors();
+                
+            }
+                
     }
 );
+
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -164,6 +180,7 @@ builder.Services.AddScoped<ExternalNotificationService>();
 builder.Services.AddScoped<IProfileContextFacade, ProfileContextFacade>();
 builder.Services.AddScoped<ExternalProfileService>();
 
+
 // IAM Bounded Context Injection Configuration
 
 // TokenSettings Configuration
@@ -202,11 +219,13 @@ using (var scope = app.Services.CreateScope())
 
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    
 }
+
 
 app.UseCors("AllowAllPolicy");
 

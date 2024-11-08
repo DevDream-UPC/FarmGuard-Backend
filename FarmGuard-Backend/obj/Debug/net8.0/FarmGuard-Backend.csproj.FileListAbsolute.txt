@@ -239,3 +239,4 @@ D:\Proyectos\06-C#\FarmGuard-Backend\FarmGuard-Backend\bin\Debug\net8.0\Microsof
 D:\Proyectos\06-C#\FarmGuard-Backend\FarmGuard-Backend\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
 D:\Proyectos\06-C#\FarmGuard-Backend\FarmGuard-Backend\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
 D:\Proyectos\06-C#\FarmGuard-Backend\FarmGuard-Backend\bin\Debug\net8.0\de-DE\Kephas.Abstractions.resources.dll
+D:\Proyectos\06-C#\FarmGuard-Backend\FarmGuard-Backend\bin\Debug\net8.0\appsettings.Production.json
