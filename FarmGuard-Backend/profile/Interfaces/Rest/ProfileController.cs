@@ -55,7 +55,9 @@ public class ProfileController(IProfileCommandService profileCommandService,IPro
         var updateProfileCommand = new UpdateProfileCommand(profileId, resource.FirstName, resource.LastName,
             resource.Email, resource.UrlPhoto);
         var profile = await profileCommandService.Handle(updateProfileCommand);
-        return Ok(profile);
+
+        var resourceSend = ProfileResourceFromEntityAssembler.ToResourceFromEntity(profile);
+        return Ok(resourceSend);
     }
 
     [HttpGet("{idProfile}")]

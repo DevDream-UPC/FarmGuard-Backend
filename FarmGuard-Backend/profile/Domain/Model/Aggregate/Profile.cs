@@ -43,6 +43,8 @@ public partial class Profile
     public int InventoryId { get; private set; }
     
     public int UserId { get; private set; }
+    
+    
     public User User { get; private set; }
 
     public void AssignInventory(int idInventory)

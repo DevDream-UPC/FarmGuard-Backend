@@ -50,10 +50,7 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.WebHost.ConfigureKestrel(options =>
-{
-    options.Listen(IPAddress.Any, 8080);  // Asegúrate de que escucha en el puerto 8080
-});
+
 
 /*Configuracion LowerCaseUrl*/
 builder.Services.AddRouting(options => options.LowercaseUrls = true);

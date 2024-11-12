@@ -90,7 +90,8 @@ public class AppDbContext(DbContextOptions options):DbContext(options)
         builder.Entity<Profile>()
             .HasOne(p => p.Inventory)
             .WithOne(i =>i.Profile)
-            .HasForeignKey<Profile>(p => p.InventoryId);
+            .HasForeignKey<Profile>(p => p.InventoryId)
+            .OnDelete(DeleteBehavior.Cascade);;
             
 
         builder.Entity<Inventory>()
