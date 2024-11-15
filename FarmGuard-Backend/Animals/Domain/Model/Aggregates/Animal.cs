@@ -19,7 +19,7 @@ public class Animal
         Name = name;
         SerialNumber = new SerialNumberAnimal();
         
-        //Funcion para convertir en Enum
+        // Function to convert string to Enum
         Specie = ConvertStringToEnum(specie);
 
         UrlIot = urlIot;
@@ -31,24 +31,21 @@ public class Animal
         HearRate = hearRate;
         Temperature = temperature;
         
-        InventoryId= inventoryId;
+        InventoryId = inventoryId;
     }
     public int Id { get; }
     public SerialNumberAnimal SerialNumber { get; private set; }
     public string Name { get; private set; }
     public ESpecie Specie { get; private set; }
-    /*Vacunas*/
     public ICollection<Vaccine> Vaccines { get; private set; }
     public string UrlIot { get; private set; }
     public string UrlPhoto { get; private set; }
-    /*Inventario*/
     public Inventory Inventory { get; private set; }
     public int InventoryId { get; private set; }
     public string Location { get; private set; }
     public long HearRate { get; private set; }
     public long Temperature { get; private set; }
     
-    /*Funciones*/
     public ESpecie ConvertStringToEnum(string specie)
     {
         if (Enum.TryParse<ESpecie>(specie, true, out var eSpecie))

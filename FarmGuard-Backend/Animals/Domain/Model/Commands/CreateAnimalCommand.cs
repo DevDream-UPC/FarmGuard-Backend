@@ -1,12 +1,13 @@
-namespace FarmGuard_Backend.Animals.Domain.Model.Commands;
-
-public record CreateAnimalCommand(
-    string name, 
-    string specie, 
-    string urlIot, 
-    string urlPhoto, 
-    string location, 
-    long hearRate,
-    long temperature,
-    int inventoryId
-    );
+namespace FarmGuard_Backend.Animals.Domain.Model.Commands
+{
+    public class CreateAnimalCommand
+    {
+        public string Name { get; set; }
+        public string Specie { get; set; }
+        public string UrlIot { get; set; }
+        public string UrlPhoto { get; set; }
+        public string Location { get; set; }
+        public int HearRate { get; set; }
+        public double Temperature { get; set; }
+    }
+}

@@ -13,7 +13,6 @@ using FarmGuard_Backend.MedicHistory.Domain.Services;
 using FarmGuard_Backend.MedicHistory.Infrastructure.Persistence.EFC.Repositories;
 using FarmGuard_Backend.Notifications.Application.Internal.CommandServices;
 using FarmGuard_Backend.Notifications.Domain.Repositories;
-using FarmGuard_Backend.Notifications.Domain.Services;
 using FarmGuard_Backend.Notifications.Infrastructure.Persistence.EFC.Repositories;
 using FarmGuard_Backend.Shared.Domain.Repositories;
 using FarmGuard_Backend.Shared.Infrastructure.Persistance.EFC.Configuration.Extensions;
@@ -24,94 +23,61 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-/*Configuracion LowerCaseUrl*/
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
-builder.Services.AddControllers( options => options.Conventions.Add(new KebabCaseRouteNamingConvention()));
+builder.Services.AddControllers(options => options.Conventions.Add(new KebabCaseRouteNamingConvention()));
 
-/*Añadir Conexion DB*/
-var connectionSrting = builder.Configuration.GetConnectionString("DefaultConnection");
-/*Configurar Contexto de la DB and niveles de loggin*/
-
-builder.Services.AddDbContext<AppDbContext>(
-    options =>
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<AppDbContext>(options =>
+{
+    if (connectionString != null)
     {
-        if (connectionSrting != null)
-            if (builder.Environment.IsDevelopment())
-                options.UseMySQL(connectionSrting)
-                    .LogTo(Console.WriteLine, LogLevel.Information)
-                    .EnableSensitiveDataLogging()
-                    .EnableDetailedErrors();
-            else if (builder.Environment.IsProduction())
-                options.UseMySQL(connectionSrting)
-                    .LogTo(Console.WriteLine, LogLevel.Error)
-                    .EnableDetailedErrors();
+        if (builder.Environment.IsDevelopment())
+            options.UseMySQL(connectionString).LogTo(Console.WriteLine, LogLevel.Information).EnableSensitiveDataLogging().EnableDetailedErrors();
+        else if (builder.Environment.IsProduction())
+            options.UseMySQL(connectionString).LogTo(Console.WriteLine, LogLevel.Error).EnableDetailedErrors();
     }
-);
+});
 
-// Add services to the container.
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(
-    c =>
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo
     {
-        c.SwaggerDoc("v1",
-            new OpenApiInfo
-            {
-                Title = "DevDream.FarmGuard.Api",
-                Version = "v1",
-                Description = "DevDream FarmGuard Platform Api",
-                TermsOfService = new Uri("https://example.com/terms"),
-                License = new OpenApiLicense
-                {
-                    Name = "Apache 2.0",
-                    Url = new Uri("https://www.apache.org/licenses/LICENSE-2.0.html")
-                }
-            });
+        Title = "DevDream.FarmGuard.Api",
+        Version = "v1",
+        Description = "DevDream FarmGuard Platform Api",
+        TermsOfService = new Uri("https://example.com/terms"),
+        License = new OpenApiLicense
+        {
+            Name = "Apache 2.0",
+            Url = new Uri("https://www.apache.org/licenses/LICENSE-2.0.html")
+        }
     });
+});
 
-/*Configure Lowercase URLs*/
-builder.Services.AddRouting(options => options.LowercaseUrls = true);
-
-/*Configurar la inyeccion de dependencias*/
-
-//----------------Animal BoundedContext---------------------
 builder.Services.AddScoped<IAnimalRepository, AnimalRepository>();
 builder.Services.AddScoped<IAnimalCommandService, AnimalCommandService>();
 builder.Services.AddScoped<IAnimalQueryService, AnimalQueryService>();
-
 builder.Services.AddScoped<IIventoryRepository, InventoryRepository>();
 builder.Services.AddScoped<IInventoryCommandService, InventoryCommandService>();
 builder.Services.AddScoped<IInventoryQueryService, InventoryQueryService>();
-
-//----------------MedicalHistory BoundedContext---------------------
 builder.Services.AddScoped<IVaccineRepository, VaccineRepository>();
 builder.Services.AddScoped<IVaccineCommandService, VaccineCommandService>();
-builder.Services.AddScoped<IVaccineQueryService,VaccineQueryService>();
-
+builder.Services.AddScoped<IVaccineQueryService, VaccineQueryService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-//----------------Notification BoundedContext---------------------
 builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
-builder.Services.AddScoped<INotificationCommandService,NotificationCommandService>();
-
-//----------------External Services BoundedContext---------------------
+builder.Services.AddScoped<NotificationCommandService>();
 builder.Services.AddScoped<IAnimalContextFacade, AnimalContextFacade>();
 builder.Services.AddScoped<ExternalAnimalService>();
 
-/* Add CORS Policy*/
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAllPolicy",
-        policy => policy.AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader());
+    options.AddPolicy("AllowAllPolicy", policy => policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 });
-
 
 var app = builder.Build();
 
-/* Verify Database Objects are created*/
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
@@ -119,9 +85,6 @@ using (var scope = app.Services.CreateScope())
     context.Database.EnsureCreated();
 }
 
-
-
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -129,9 +92,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();

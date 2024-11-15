@@ -4,7 +4,7 @@ public enum ESpecie
 {
     Mamíferos = 0,
     Aves = 1,
-    Reptiles= 2,
+    Reptiles = 2,
     Anfibios = 3,
     Peces = 4,
     Insectos = 5,

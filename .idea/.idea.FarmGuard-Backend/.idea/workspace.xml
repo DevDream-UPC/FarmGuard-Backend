@@ -10,11 +10,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5bbbec5a-8698-4918-8ffc-318a3ad27a22" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/Notifications/Application/Internal/CommandServices/NotificationCommandService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/Notifications/Domain/Model/Aggregates/Notification.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/Notifications/Domain/Repositories/INotificationRepository.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/FarmGuard-Backend/Notifications/Infrastructure/Persistence/EFC/Repositories/NotificationRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_10_2024_12_09_p__m___Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_10_2024_12_09_p_ m__[Changes]1/FarmGuard-Backend.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_10_2024_12_09_p_ m__[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_10_2024_23_37_[Changes]1/FarmGuard-Backend.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_10_2024_23_37_[Changes]1/FarmGuard-Backend.assets.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_10_2024_23_37_[Changes]1/FarmGuard-Backend.csproj.AssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_10_2024_23_37_[Changes]1/FarmGuard-Backend.csproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_10_2024_23_37_[Changes]1/FarmGuard-Backend.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_10_2024_23_37_[Changes]1/FarmGuard-Backend.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_10_2024_23_37_[Changes]1/FarmGuard-Backend.genruntimeconfig.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_10_2024_23_37_[Changes]1/FarmGuard-Backend.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_10_2024_23_37_[Changes]1/apphost.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_10_2024_23_37_[Changes]1/project.nuget.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_10_2024_23_37_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Checkout_at_29_10_2024_23_37__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Update_at_29_10_2024_12_09_p__m___Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Update_at_29_10_2024_12_09_p_ m__[Changes]/FarmGuard-Backend.AssemblyInfoInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/shelf/Uncommitted_changes_before_Update_at_29_10_2024_12_09_p_ m__[Changes]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FarmGuard-Backend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Application/Internal/ComandServices/AnimalCommandService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Application/Internal/ComandServices/AnimalCommandService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Domain/Model/Commands/CreateAnimalCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/Animals/Domain/Model/Commands/CreateAnimalCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/Notifications/Application/Internal/CommandServices/NotificationCommandService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/Notifications/Application/Internal/CommandServices/NotificationCommandService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/Notifications/Domain/Model/Aggregates/Notification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/Notifications/Domain/Model/Aggregates/Notification.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/Notifications/Domain/Repositories/INotificationRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/Notifications/Domain/Repositories/INotificationRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/Notifications/Infrastructure/Persistence/EFC/Repositories/NotificationRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/Notifications/Infrastructure/Persistence/EFC/Repositories/NotificationRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/Shared/Infrastructure/Persistance/EFC/Configuration/AppDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/Shared/Infrastructure/Persistance/EFC/Configuration/AppDbContext.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/appsettings.json" afterDir="false" />
@@ -27,9 +47,7 @@
       <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.MvcApplicationPartsAssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.MvcApplicationPartsAssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.csproj.CoreCompileInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.genruntimeconfig.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/FarmGuard-Backend/obj/Debug/net8.0/FarmGuard-Backend.pdb" afterDir="false" />
@@ -56,7 +74,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="feat/add-notifications" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -95,22 +113,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.FarmGuard-Backend: http.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Launch Settings Profile.FarmGuard-Backend: https.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feat/add-notifications&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.FarmGuard-Backend: http.executor": "Run",
+    ".NET Launch Settings Profile.FarmGuard-Backend: https.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "feat/optimized-code",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.FarmGuard-Backend: https">
     <configuration name="FarmGuard-Backend: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/FarmGuard-Backend/FarmGuard-Backend.csproj" />
@@ -172,6 +191,7 @@
       <workItem from="1730259774783" duration="2816000" />
       <workItem from="1730265329890" duration="1913000" />
       <workItem from="1730291474654" duration="6054000" />
+      <workItem from="1731692155559" duration="1401000" />
     </task>
     <task id="LOCAL-00001" summary="chore[main]:commit initial">
       <option name="closed" value="true" />

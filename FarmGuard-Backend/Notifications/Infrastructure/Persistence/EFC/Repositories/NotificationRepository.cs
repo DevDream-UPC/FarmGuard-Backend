@@ -5,12 +5,11 @@ using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using FarmGuard_Backend.Shared.Infrastructure.Persistance.EFC.Configuration.Extensions;
 
-namespace FarmGuard_Backend.Notifications.Infrastructure.Persistence.EFC.Repositories
-{
-    // Implementación del repositorio de notificaciones
-    public class NotificationRepository (AppDbContext context): BaseRepository<Notification>(context), INotificationRepository
-    {
-       
+namespace FarmGuard_Backend.Notifications.Infrastructure.Persistence.EFC.Repositories;
 
-    }
+public class NotificationRepository : BaseRepository<Notification>, INotificationRepository
+{
+    public NotificationRepository(AppDbContext context) : base(context) { }
+
+    public async Task AddAsync(Notification notification) => await Context.Set<Notification>().AddAsync(notification);
 }
